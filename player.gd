@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
-	var input_direccion = Input.get_vector("Atras","Alante","Arriba","Abajo")
+	var input_direccion = Input.get_vector("Izquierda","Derecha","Arriba","Abajo")
 	var horizontal = input_direccion.x
 	var vertical = input_direccion.y
 
@@ -30,12 +30,12 @@ func _physics_process(delta: float) -> void:
 		if horizontal != 0:
 			animated_sprite.flip_h = horizontal < 0
 	elif horizontal != 0:
-		if animated_sprite.animation != "caminar":
-			animated_sprite.play("caminar")
+		if animated_sprite.animation != "Walk":
+			animated_sprite.play("Walk")
 		animated_sprite.flip_h = horizontal < 0
 	else:
-		if animated_sprite.animation != "idle":
-			animated_sprite.play("idle")
+		if animated_sprite.animation != "Idle":
+			animated_sprite.play("Idle")
 
 	# Mover al personaje
 	move_and_slide()

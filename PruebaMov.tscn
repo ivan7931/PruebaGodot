@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=49 format=4 uid="uid://ot4mpn7djyuu"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://h3ofia7kn5jh" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Idle/0_Skeleton_Warrior_Idle_000.png" id="2_l8qwv"]
@@ -34,6 +34,12 @@
 [ext_resource type="Texture2D" uid="uid://bjg4b7la7nk5k" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Idle/0_Skeleton_Warrior_Idle_015.png" id="17_5hgat"]
 [ext_resource type="Texture2D" uid="uid://crua8k4mfvy61" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Idle/0_Skeleton_Warrior_Idle_016.png" id="18_qyfmr"]
 [ext_resource type="Texture2D" uid="uid://ch6yxku4a3ow4" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Idle/0_Skeleton_Warrior_Idle_017.png" id="19_xp4vk"]
+[ext_resource type="Texture2D" uid="uid://bedi0x1oen83x" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_000.png" id="32_jncs5"]
+[ext_resource type="Texture2D" uid="uid://b4116ns7kj0p7" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_001.png" id="33_pnhtw"]
+[ext_resource type="Texture2D" uid="uid://bw5fpx71iho38" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_002.png" id="34_32emf"]
+[ext_resource type="Texture2D" uid="uid://ddcd5qquafm1m" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_003.png" id="35_e0241"]
+[ext_resource type="Texture2D" uid="uid://cgrrux7ddj8mp" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_004.png" id="36_lewjb"]
+[ext_resource type="Texture2D" uid="uid://brobuxqkc6j2m" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_005.png" id="37_edn8c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
 radius = 39.0
@@ -139,6 +145,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_jncs5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_pnhtw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_32emf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_e0241")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lewjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_edn8c")
+}],
+"loop": true,
+"name": &"salto_completo",
 "speed": 15.0
 }]
 
@@ -9373,8 +9402,8 @@ shape = SubResource("CapsuleShape2D_scd2a")
 position = Vector2(1.0000153, 4.9999967)
 scale = Vector2(0.20916665, 0.21583335)
 sprite_frames = SubResource("SpriteFrames_dg03j")
-animation = &"Idle"
-frame_progress = 0.80152875
+animation = &"salto_completo"
+frame_progress = 0.81969565
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
