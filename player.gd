@@ -1,26 +1,41 @@
 extends CharacterBody2D
 
-
-@export var SPEED = 300.0
+@export var  SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
-@export var GRAVITY = 1800
+@export var GRAVITY = 800
+
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
+	var input_direccion = Input.get_vector("Atras","Alante","Arriba","Abajo")
+	var horizontal = input_direccion.x
+	var vertical = input_direccion.y
 
-	var input_direccion = Input.get_vector("Atras", "Alante", "Arriba", "Abajo")
+	# Gravedad (siempre) para evitar que pj se quede flotando en el aire
+	velocity.y += GRAVITY * delta
+
+	# Salto
+	if is_on_floor() and vertical < 0:
+		velocity.y = JUMP_VELOCITY
+		if not is_on_floor() and vertical < 0 :
+			velocity.y = JUMP_VELOCITY
+	# Movimiento horizontal
+	velocity.x = horizontal * SPEED
+
+	# Animaciones
 	if not is_on_floor():
-		velocity.y += GRAVITY * delta
+		if animated_sprite.animation != "salto_completo":
+			animated_sprite.play("salto_completo")
+		# Flip en el aire
+		if horizontal != 0:
+			animated_sprite.flip_h = horizontal < 0
+	elif horizontal != 0:
+		if animated_sprite.animation != "caminar":
+			animated_sprite.play("caminar")
+		animated_sprite.flip_h = horizontal < 0
 	else:
-		velocity = input_direccion * SPEED
-		animated_sprite.play("Walk")
-	if input_direccion:
-		velocity = input_direccion * SPEED
-		animated_sprite.play("Walk")
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animated_sprite.play("Idle")
-	move_and_slide() 
+		if animated_sprite.animation != "idle":
+			animated_sprite.play("idle")
 
-	# Handle jump.
-	
+	# Mover al personaje
+	move_and_slide()
