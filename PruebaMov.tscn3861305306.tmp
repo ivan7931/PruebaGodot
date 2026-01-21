@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=78 format=4 uid="uid://ot4mpn7djyuu"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://bpwqsqlekma1h" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing/0_Skeleton_Warrior_Slashing_000.png" id="2_fdd1p"]
@@ -67,12 +67,6 @@
 [ext_resource type="Texture2D" uid="uid://ddcd5qquafm1m" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_003.png" id="35_e0241"]
 [ext_resource type="Texture2D" uid="uid://cgrrux7ddj8mp" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_004.png" id="36_lewjb"]
 [ext_resource type="Texture2D" uid="uid://brobuxqkc6j2m" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_005.png" id="37_edn8c"]
-[ext_resource type="Texture2D" uid="uid://yhr4ylm7hqe7" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_000.png" id="59_lho4y"]
-[ext_resource type="Texture2D" uid="uid://bs2f6ddy4k1xn" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_001.png" id="60_ncxe7"]
-[ext_resource type="Texture2D" uid="uid://cqhjcqb0etk8p" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_002.png" id="61_byrpv"]
-[ext_resource type="Texture2D" uid="uid://ca07v5hc2fkki" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_003.png" id="62_v5wfk"]
-[ext_resource type="Texture2D" uid="uid://c6n4iua08jonv" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_004.png" id="63_hvitb"]
-[ext_resource type="Texture2D" uid="uid://ct2qepk5clwe6" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_005.png" id="64_vdy3k"]
 [ext_resource type="Script" uid="uid://jmdeyrv5pvtl" path="res://espinas.gd" id="68_3m1xi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
@@ -118,9 +112,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_hvitb")
 }],
-"loop": true,
+"loop": false,
 "name": &"Atack",
-"speed": 22.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -170,7 +164,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Die",
-"speed": 25.0
+"speed": 19.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -229,7 +223,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 25.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -270,29 +264,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("59_lho4y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("60_ncxe7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("61_byrpv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("62_v5wfk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("63_hvitb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("64_vdy3k")
-}],
-"loop": true,
-"name": &"caer",
 "speed": 15.0
 }, {
 "frames": [{
@@ -9547,8 +9518,7 @@ size = Vector2(191, 20)
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(442, 399)
-collision_mask = 5
+position = Vector2(222, 582)
 script = ExtResource("1_lnp4d")
 metadata/_edit_group_ = true
 
@@ -9586,12 +9556,9 @@ script = ExtResource("5_j7fik")
 
 [node name="Espinas" type="Area2D" parent="Trampas" groups=["Trampas"]]
 position = Vector2(729, 680)
-collision_layer = 4
 script = ExtResource("68_3m1xi")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trampas/Espinas"]
 position = Vector2(85.5, 0)
 shape = SubResource("RectangleShape2D_1v0es")
-
-[connection signal="body_entered" from="Trampas/Espinas" to="Player" method="_on_espinas_body_entered"]
