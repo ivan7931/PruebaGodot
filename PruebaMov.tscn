@@ -118,7 +118,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_hvitb")
 }],
-"loop": true,
+"loop": false,
 "name": &"Atack",
 "speed": 22.0
 }, {
@@ -9560,7 +9560,7 @@ shape = SubResource("CapsuleShape2D_scd2a")
 position = Vector2(1.0000153, 4.9999967)
 scale = Vector2(0.20916665, 0.21583335)
 sprite_frames = SubResource("SpriteFrames_dg03j")
-animation = &"Die"
+animation = &"Atack"
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 

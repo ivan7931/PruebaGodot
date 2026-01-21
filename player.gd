@@ -18,8 +18,6 @@ func _physics_process(delta: float) -> void:
 		var horizontal = input_direccion.x
 		var vertical = input_direccion.y
 
-		
-
 		# Salto
 		if is_on_floor() and vertical < 0:
 			velocity.y = JUMP_VELOCITY
@@ -27,7 +25,8 @@ func _physics_process(delta: float) -> void:
 				velocity.y = JUMP_VELOCITY
 		# Movimiento horizontal
 		velocity.x = horizontal * SPEED
-		
+		if Input.is_action_just_pressed("Atacar"):
+			ataca = true
 		# Animaciones
 		
 		if not is_on_floor():
@@ -43,6 +42,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			if animated_sprite.animation != "Idle":
 				animated_sprite.play("Idle")
+	else : 
+		animated_sprite.play("Atack")
+		await (animated_sprite.animation_finished)
+		ataca = false
 	# Mover al personaje
 	move_and_slide()
 	
