@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=90 format=4 uid="uid://ot4mpn7djyuu"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://bpwqsqlekma1h" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing/0_Skeleton_Warrior_Slashing_000.png" id="2_fdd1p"]
@@ -73,7 +73,13 @@
 [ext_resource type="Texture2D" uid="uid://ca07v5hc2fkki" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_003.png" id="62_v5wfk"]
 [ext_resource type="Texture2D" uid="uid://c6n4iua08jonv" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_004.png" id="63_hvitb"]
 [ext_resource type="Texture2D" uid="uid://ct2qepk5clwe6" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_005.png" id="64_vdy3k"]
+[ext_resource type="Texture2D" uid="uid://ccwts2i5st6qy" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_000.png" id="65_rdbj3"]
+[ext_resource type="Texture2D" uid="uid://c522gvoo6lxyj" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_001.png" id="66_3jwui"]
+[ext_resource type="Texture2D" uid="uid://dc7ass7adh8r4" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_002.png" id="67_uiea2"]
 [ext_resource type="Script" uid="uid://jmdeyrv5pvtl" path="res://espinas.gd" id="68_3m1xi"]
+[ext_resource type="Texture2D" uid="uid://bhlsebv08unap" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_003.png" id="68_6blhy"]
+[ext_resource type="Texture2D" uid="uid://6alloqgucpt3" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_004.png" id="69_dsy3c"]
+[ext_resource type="Texture2D" uid="uid://kgggm7k1jc31" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_005.png" id="70_1icp0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
 radius = 39.0
@@ -293,6 +299,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"caer",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("65_rdbj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_3jwui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_uiea2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_6blhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_dsy3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_1icp0")
+}],
+"loop": true,
+"name": &"deslizar",
 "speed": 15.0
 }, {
 "frames": [{
@@ -9560,7 +9589,8 @@ shape = SubResource("CapsuleShape2D_scd2a")
 position = Vector2(1.0000153, 4.9999967)
 scale = Vector2(0.20916665, 0.21583335)
 sprite_frames = SubResource("SpriteFrames_dg03j")
-animation = &"Die"
+animation = &"Atack"
+frame_progress = 0.8587914
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
