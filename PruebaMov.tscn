@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=92 format=4 uid="uid://ot4mpn7djyuu"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://bpwqsqlekma1h" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing/0_Skeleton_Warrior_Slashing_000.png" id="2_fdd1p"]
@@ -347,6 +347,12 @@ animations = [{
 "name": &"salto_completo",
 "speed": 15.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdbj3"]
+size = Vector2(78.5, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jwui"]
+size = Vector2(89, 48.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qai5i"]
 texture = ExtResource("3_j7fik")
@@ -9576,10 +9582,9 @@ size = Vector2(191, 20)
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(442, 399)
+position = Vector2(363, 397)
 collision_mask = 5
 script = ExtResource("1_lnp4d")
-metadata/_edit_group_ = true
 
 [node name="PlayerColission" type="CollisionShape2D" parent="Player"]
 position = Vector2(-4, 9)
@@ -9589,8 +9594,16 @@ shape = SubResource("CapsuleShape2D_scd2a")
 position = Vector2(1.0000153, 4.9999967)
 scale = Vector2(0.20916665, 0.21583335)
 sprite_frames = SubResource("SpriteFrames_dg03j")
-animation = &"Atack"
-frame_progress = 0.8587914
+animation = &"deslizar"
+frame_progress = 0.9795294
+
+[node name="atacar" type="CollisionShape2D" parent="Player"]
+position = Vector2(36.75, 24)
+shape = SubResource("RectangleShape2D_rdbj3")
+
+[node name="deslizar" type="CollisionShape2D" parent="Player"]
+position = Vector2(-23, 50)
+shape = SubResource("RectangleShape2D_3jwui")
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 

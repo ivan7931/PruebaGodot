@@ -38,13 +38,16 @@ func _physics_process(delta: float) -> void:
 	
 	#CODIGO PARA ANIMACIONES
 	if ataca:
+		atacar()
 		tiempo_ataque += delta
 		if tiempo_ataque >= DURACION_ATAQUE:
 			ataca = false
+			
 	#SI ABAJO (+1) DESLIZAR
 	else:
 		if is_on_floor() and vertical > 0:
 			animated_sprite.play("deslizar")
+			agacharse()
 		#SI NO ESTA EN EL SUELO SALTO
 		elif not is_on_floor():
 			animated_sprite.play("salto_completo")
@@ -68,3 +71,23 @@ func _on_espinas_body_entered(body: Node2D) -> void:
 	print("ENTRÓ EN EL AREA:", body.name)
 	animated_sprite.play("Die")
 	muerto = true
+	
+func agacharse():
+	$PlayerColission.disabled=true
+	$atacar.disabled = true
+	$deslizar.disabled = false
+	
+func atacar():
+	$PlayerColission.disabled = true
+	$deslizar.disabled = true
+	$atacar.disabled = false
+	# Crear un temporizador que vuelva a la postura normal
+	var timer = get_tree().create_timer(1)
+	await timer.timeout  # espera DURACION_ATAQUE segundos
+	
+	# Volver a la postura de pie
+	de_pie()
+func de_pie():
+	$deslizar.disabled = true
+	$atacar.disabled = true
+	$PlayerColission.disabled = false
