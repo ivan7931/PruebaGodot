@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=152 format=4 uid="uid://ot4mpn7djyuu"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://bpwqsqlekma1h" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing/0_Skeleton_Warrior_Slashing_000.png" id="2_fdd1p"]
@@ -61,40 +61,82 @@
 [ext_resource type="Texture2D" uid="uid://xp4unywrk5ig" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Dying/0_Skeleton_Warrior_Dying_012.png" id="26_n6ivf"]
 [ext_resource type="Texture2D" uid="uid://4nt1fwi53kjs" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Dying/0_Skeleton_Warrior_Dying_013.png" id="27_h84vx"]
 [ext_resource type="Texture2D" uid="uid://c7l7k4uuewaxv" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Dying/0_Skeleton_Warrior_Dying_014.png" id="28_5d28v"]
-[ext_resource type="Texture2D" uid="uid://bedi0x1oen83x" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_000.png" id="32_jncs5"]
-[ext_resource type="Texture2D" uid="uid://b4116ns7kj0p7" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_001.png" id="33_pnhtw"]
-[ext_resource type="Texture2D" uid="uid://bw5fpx71iho38" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_002.png" id="34_32emf"]
-[ext_resource type="Texture2D" uid="uid://ddcd5qquafm1m" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_003.png" id="35_e0241"]
-[ext_resource type="Texture2D" uid="uid://cgrrux7ddj8mp" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_004.png" id="36_lewjb"]
-[ext_resource type="Texture2D" uid="uid://brobuxqkc6j2m" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Jump Loop/0_Skeleton_Warrior_Jump Loop_005.png" id="37_edn8c"]
 [ext_resource type="Texture2D" uid="uid://yhr4ylm7hqe7" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_000.png" id="59_lho4y"]
+[ext_resource type="Texture2D" uid="uid://bf5pyuursjosb" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_000.png" id="59_sixth"]
+[ext_resource type="Texture2D" uid="uid://bnpxrk8f0ww70" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_001.png" id="60_dsts8"]
 [ext_resource type="Texture2D" uid="uid://bs2f6ddy4k1xn" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_001.png" id="60_ncxe7"]
+[ext_resource type="Texture2D" uid="uid://bn08x0awjci32" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_002.png" id="61_4w6ob"]
 [ext_resource type="Texture2D" uid="uid://cqhjcqb0etk8p" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_002.png" id="61_byrpv"]
+[ext_resource type="Texture2D" uid="uid://y36bo2ad1e8j" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_003.png" id="62_gp5xr"]
 [ext_resource type="Texture2D" uid="uid://ca07v5hc2fkki" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_003.png" id="62_v5wfk"]
 [ext_resource type="Texture2D" uid="uid://c6n4iua08jonv" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_004.png" id="63_hvitb"]
+[ext_resource type="Texture2D" uid="uid://bdwhkacm3afps" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_004.png" id="63_opghn"]
+[ext_resource type="Texture2D" uid="uid://dwg6wesjfrqy7" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_005.png" id="64_3tk2e"]
 [ext_resource type="Texture2D" uid="uid://ct2qepk5clwe6" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Falling Down/0_Skeleton_Warrior_Falling Down_005.png" id="64_vdy3k"]
+[ext_resource type="Texture2D" uid="uid://bwca7l6itfm2l" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_006.png" id="65_b3dam"]
 [ext_resource type="Texture2D" uid="uid://ccwts2i5st6qy" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_000.png" id="65_rdbj3"]
 [ext_resource type="Texture2D" uid="uid://c522gvoo6lxyj" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_001.png" id="66_3jwui"]
+[ext_resource type="Texture2D" uid="uid://6oi7uxr1jfqf" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_007.png" id="66_8gn84"]
 [ext_resource type="Texture2D" uid="uid://dc7ass7adh8r4" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_002.png" id="67_uiea2"]
+[ext_resource type="Texture2D" uid="uid://f10k4ypnidru" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_008.png" id="67_wk00j"]
 [ext_resource type="Script" uid="uid://jmdeyrv5pvtl" path="res://espinas.gd" id="68_3m1xi"]
 [ext_resource type="Texture2D" uid="uid://bhlsebv08unap" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_003.png" id="68_6blhy"]
+[ext_resource type="Texture2D" uid="uid://bqx1peitcxf5m" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_009.png" id="68_n6kbj"]
 [ext_resource type="Texture2D" uid="uid://6alloqgucpt3" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_004.png" id="69_dsy3c"]
+[ext_resource type="Texture2D" uid="uid://celu4x8nl1mh4" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_010.png" id="69_s42vn"]
 [ext_resource type="Texture2D" uid="uid://kgggm7k1jc31" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_005.png" id="70_1icp0"]
+[ext_resource type="Texture2D" uid="uid://4nxub8ntctfu" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing in The Air/0_Skeleton_Warrior_Slashing in The Air_011.png" id="70_8hhcw"]
 [ext_resource type="Texture2D" uid="uid://b477ukw7nic83" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_000.png" id="71_6brei"]
+[ext_resource type="Texture2D" uid="uid://0ovf4y82a0dc" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_000.png" id="71_wv6v7"]
+[ext_resource type="Texture2D" uid="uid://bqlj8evb8c3b1" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_001.png" id="72_45jbm"]
 [ext_resource type="Texture2D" uid="uid://bu4d8rbfx7b3j" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_001.png" id="72_sqm8v"]
+[ext_resource type="Texture2D" uid="uid://f5h5va3ym4st" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_002.png" id="73_fl1k6"]
 [ext_resource type="Texture2D" uid="uid://cbxmh4si7x1br" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_002.png" id="73_pftnb"]
 [ext_resource type="Texture2D" uid="uid://be8lc66puapvd" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_003.png" id="74_buyqx"]
+[ext_resource type="Texture2D" uid="uid://utqo4tsr73bm" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_003.png" id="74_rxex2"]
 [ext_resource type="Texture2D" uid="uid://cdw0yeoc6wdi" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_004.png" id="75_0dp7m"]
+[ext_resource type="Texture2D" uid="uid://nw3xgtwo4aqb" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_004.png" id="75_fg8c0"]
+[ext_resource type="Texture2D" uid="uid://bo7aqc34pfv14" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_005.png" id="76_1x6b0"]
 [ext_resource type="Texture2D" uid="uid://p48bumlqx4fp" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_005.png" id="76_tstlc"]
 [ext_resource type="Texture2D" uid="uid://dbrlcnfx2gemq" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_006.png" id="77_ehvth"]
+[ext_resource type="Texture2D" uid="uid://bk8t8lelun6r3" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_006.png" id="77_q0rf6"]
+[ext_resource type="Texture2D" uid="uid://7lgd7t4fejlp" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_007.png" id="78_1ubji"]
 [ext_resource type="Texture2D" uid="uid://d0etwpxqgsvi" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_007.png" id="78_ce8y1"]
+[ext_resource type="Texture2D" uid="uid://bop8ygh31i06f" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_008.png" id="79_1ah44"]
 [ext_resource type="Texture2D" uid="uid://dxn3ps6lkyv3p" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_008.png" id="79_mpnhr"]
+[ext_resource type="Texture2D" uid="uid://de3pskjk0pdwk" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_009.png" id="80_7pas0"]
 [ext_resource type="Texture2D" uid="uid://d1ojj03bcwce1" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_009.png" id="80_oux5d"]
+[ext_resource type="Texture2D" uid="uid://y14xsqnonkic" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_010.png" id="81_08knc"]
 [ext_resource type="Texture2D" uid="uid://cculkqs2tjntq" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_010.png" id="81_derna"]
 [ext_resource type="Texture2D" uid="uid://ogklumsgivkn" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground-Additional_06.png" id="81_uiea2"]
+[ext_resource type="Texture2D" uid="uid://4d404h0exlka" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_011.png" id="82_4wsmy"]
 [ext_resource type="Texture2D" uid="uid://ce0hm7fphijux" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground-Additional_05.png" id="82_6blhy"]
 [ext_resource type="Texture2D" uid="uid://f2tis2gxbe8u" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_011.png" id="82_rf23d"]
 [ext_resource type="PackedScene" uid="uid://c4c2n252rp3gc" path="res://barril.tscn" id="83_6blhy"]
+[ext_resource type="Texture2D" uid="uid://bi6io121eyvs5" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_000.png" id="95_657qb"]
+[ext_resource type="Texture2D" uid="uid://dt4caj8fj52ol" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_001.png" id="96_mr5ka"]
+[ext_resource type="Texture2D" uid="uid://b6khdb5ligwsf" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_002.png" id="97_22rjf"]
+[ext_resource type="Texture2D" uid="uid://bjte5k043rjrj" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_003.png" id="98_kbbp4"]
+[ext_resource type="Texture2D" uid="uid://bcnolk7pq6736" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_004.png" id="99_0lcpk"]
+[ext_resource type="Texture2D" uid="uid://by8ufl0svh3on" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_005.png" id="100_04apa"]
+[ext_resource type="Texture2D" uid="uid://cx5yxe4ex6kuj" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_006.png" id="101_3d575"]
+[ext_resource type="Texture2D" uid="uid://bn20gc7a30wvs" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_007.png" id="102_3jcuf"]
+[ext_resource type="Texture2D" uid="uid://6d6q14mlgsc8" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_008.png" id="103_2we4w"]
+[ext_resource type="Texture2D" uid="uid://cw0o4he2lpf78" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_009.png" id="104_5phh4"]
+[ext_resource type="Texture2D" uid="uid://brftd3dd4nejs" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_010.png" id="105_equom"]
+[ext_resource type="Texture2D" uid="uid://cdyek5lepuql1" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_011.png" id="106_yd4tu"]
+[ext_resource type="Texture2D" uid="uid://cdyknlm6fxmqc" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_000.png" id="119_pf5mm"]
+[ext_resource type="Texture2D" uid="uid://ctb68bu8rf5bx" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_001.png" id="120_hg625"]
+[ext_resource type="Texture2D" uid="uid://b5j1iqkwyfe8l" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_002.png" id="121_nfdga"]
+[ext_resource type="Texture2D" uid="uid://d2d3265q50vc7" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_003.png" id="122_ne02f"]
+[ext_resource type="Texture2D" uid="uid://crpgo0r55gb3p" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_004.png" id="123_rpuw0"]
+[ext_resource type="Texture2D" uid="uid://wfy4qivrd5fl" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_005.png" id="124_magqt"]
+[ext_resource type="Texture2D" uid="uid://cnsncg1k7hm5n" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_006.png" id="125_oxyy8"]
+[ext_resource type="Texture2D" uid="uid://cg2k0vinmul2i" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_007.png" id="126_fvob7"]
+[ext_resource type="Texture2D" uid="uid://dp3k1bxm53t58" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_008.png" id="127_ha0ec"]
+[ext_resource type="Texture2D" uid="uid://df3iy525ygxk5" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_009.png" id="128_s4gyp"]
+[ext_resource type="Texture2D" uid="uid://bn7qdnw7sxdrc" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_010.png" id="129_jb27j"]
+[ext_resource type="Texture2D" uid="uid://ttgvwgnenucm" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_011.png" id="130_5sa2g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
 radius = 38.0
@@ -295,6 +337,88 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("59_sixth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_dsts8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_4w6ob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_gp5xr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_opghn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_3tk2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_b3dam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_8gn84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_wk00j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_n6kbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_s42vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_8hhcw")
+}],
+"loop": true,
+"name": &"ataque_aire",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("71_wv6v7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_45jbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_fl1k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_rxex2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_fg8c0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_1x6b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_q0rf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_1ubji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_1ah44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_7pas0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_08knc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_4wsmy")
+}],
+"loop": true,
+"name": &"ataque_mov",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("59_lho4y")
 }, {
 "duration": 1.0,
@@ -341,6 +465,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("95_657qb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_mr5ka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_22rjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_kbbp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_0lcpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_04apa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_3d575")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_3jcuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_2we4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_5phh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_equom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_yd4tu")
+}],
+"loop": true,
+"name": &"herido",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("71_6brei")
 }, {
 "duration": 1.0,
@@ -382,25 +547,43 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("32_jncs5")
+"texture": ExtResource("119_pf5mm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("33_pnhtw")
+"texture": ExtResource("120_hg625")
 }, {
 "duration": 1.0,
-"texture": ExtResource("34_32emf")
+"texture": ExtResource("121_nfdga")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_e0241")
+"texture": ExtResource("122_ne02f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("36_lewjb")
+"texture": ExtResource("123_rpuw0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("37_edn8c")
+"texture": ExtResource("124_magqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_oxyy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_fvob7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_ha0ec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_s4gyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_jb27j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_5sa2g")
 }],
 "loop": true,
-"name": &"salto_completo",
+"name": &"run_throw",
 "speed": 15.0
 }]
 
@@ -9680,8 +9863,8 @@ shape = SubResource("CapsuleShape2D_scd2a")
 position = Vector2(-1, -3.33786e-06)
 scale = Vector2(0.20916665, 0.21583335)
 sprite_frames = SubResource("SpriteFrames_dg03j")
-animation = &"patear"
-frame_progress = 0.34053493
+animation = &"ataque_mov"
+frame_progress = 0.34071863
 
 [node name="deslizar" type="CollisionShape2D" parent="Player"]
 position = Vector2(-2, 39)

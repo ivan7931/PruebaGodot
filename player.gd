@@ -124,7 +124,11 @@ func _physics_process(delta: float) -> void:
 func iniciar_ataque():
 	ataca = true
 	tiempo_ataque = 0.0
-	animated_sprite.play("Atack")
+	# Animación según si se mueve o no
+	if velocity.x != 0:  # Si está en movimiento
+		animated_sprite.play("ataque_mov")
+	else:               # Si está quieto
+		animated_sprite.play("Atack")
 
 	if mirando_derecha:
 		ataque_der.monitoring = true
