@@ -1,15 +1,14 @@
-
 extends CharacterBody2D
 
 # =======================
 # Configuración
 # =======================
-@export var SPEED = 300.0
-@export var JUMP_VELOCITY = -400.0
-@export var GRAVITY = 1000.0
-@export var DURACION_ATAQUE = 0.4
-@export var DURACION_DESLIZAR = 0.6
-@export var TIEMPO_RECUPERAR_SALTOS = 2 # cooldown para recuperar saltos extra
+@export var SPEED := 300.0
+@export var JUMP_VELOCITY := -400.0
+@export var GRAVITY := 1000.0
+@export var DURACION_ATAQUE := 0.4
+@export var DURACION_DESLIZAR := 0.7
+@export var TIEMPO_RECUPERAR_SALTOS := 2.0
 
 # =======================
 # Estados
@@ -28,108 +27,87 @@ var cooldown_saltos := 0.0
 # Nodos
 # =======================
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 @onready var col_pie: CollisionShape2D = $dePie
 @onready var col_deslizar: CollisionShape2D = $deslizar
-@onready var col_atk_der: CollisionShape2D = $atacarDer
-@onready var col_atk_izq: CollisionShape2D = $atacarIzq
+
+@onready var ataque_der: Area2D = $atacarDer
+@onready var ataque_izq: Area2D = $atacarIzq
 
 # =======================
 # Ready
 # =======================
 func _ready():
-	col_atk_der.disabled = true
-	col_atk_izq.disabled = true
+	ataque_der.monitoring = false
+	ataque_izq.monitoring = false
 	col_deslizar.disabled = true
 
 # =======================
-# Física y controles
+# Física
 # =======================
 func _physics_process(delta: float) -> void:
 	if muerto:
 		velocity = Vector2.ZERO
 		return
 
-	# gravedad
+	# Gravedad
 	velocity.y += GRAVITY * delta
 
-	# input
-	var input_dir = Input.get_vector("Izquierda", "Derecha", "Arriba", "Abajo")
-	var horizontal = input_dir.x
-	var vertical = input_dir.y
+	# Input
+	var input_dir := Input.get_vector("Izquierda", "Derecha", "Arriba", "Abajo")
+	var horizontal := input_dir.x
 
-	# mirar dirección
+	# Dirección
 	if horizontal != 0:
 		mirando_derecha = horizontal > 0
 		animated_sprite.flip_h = not mirando_derecha
+
+	# Movimiento horizontal
+	velocity.x = horizontal * SPEED
+
+	# =======================
+	# Recuperar saltos (suelo + wall jump)
+	# =======================
+	if is_on_wall() and not is_on_floor():
+		saltos_restantes = 1
+	elif is_on_floor():
+		saltos_restantes = 1
+
+	# cooldown saltos extra
+	if cooldown_saltos > 0:
+		cooldown_saltos -= delta
+
+	# SALTO
+	if Input.is_action_just_pressed("Arriba") and saltos_restantes > 0:
+		velocity.y = JUMP_VELOCITY
+		saltos_restantes -= 1
+		cooldown_saltos = TIEMPO_RECUPERAR_SALTOS
 
 	# =======================
 	# ATAQUE
 	# =======================
 	if Input.is_action_just_pressed("Atacar") and not ataca and not deslizando:
-		ataca = true
-		tiempo_ataque = 0.0
-		animated_sprite.play("Atack")
-
-		col_pie.disabled = true
-		col_deslizar.disabled = true
-
-		if mirando_derecha:
-			col_atk_der.disabled = false
-			col_atk_izq.disabled = true
-		else:
-			col_atk_izq.disabled = false
-			col_atk_der.disabled = true
+		iniciar_ataque()
 
 	# =======================
 	# DESLIZAR
 	# =======================
 	if Input.is_action_just_pressed("Abajo") and is_on_floor() and not deslizando and not ataca:
-		deslizando = true
-		tiempo_deslizamiento = 0.0
-		animated_sprite.play("deslizar")
-
-		col_pie.disabled = true
-		col_deslizar.disabled = false
-		col_atk_der.disabled = true
-		col_atk_izq.disabled = true
-
-	# movimiento horizontal
-	velocity.x = horizontal * SPEED
+		iniciar_deslizamiento()
 
 	# =======================
-	# SALTO
-	# =======================
-	# Recuperar saltos extra si toca pared
-	if (is_on_wall() and not is_on_floor()):
-		saltos_restantes = 1
-	elif is_on_floor():
-		saltos_restantes = 1
-
-	# cooldown para saltos extra
-	if cooldown_saltos > 0:
-		cooldown_saltos -= delta
-		if cooldown_saltos <= 0 and not is_on_wall():
-			saltos_restantes = 1
-
-	if Input.is_action_just_pressed("Arriba") and saltos_restantes > 0:
-		velocity.y = JUMP_VELOCITY
-		saltos_restantes -= 1
-		if saltos_restantes == 1:
-			cooldown_saltos = TIEMPO_RECUPERAR_SALTOS
-
-	# =======================
-	# Animaciones y estados
+	# Estados y animaciones
 	# =======================
 	if ataca:
 		tiempo_ataque += delta
 		if tiempo_ataque >= DURACION_ATAQUE:
-			ataca = false
-			de_pie()
+			terminar_ataque()
+
 	elif deslizando:
 		tiempo_deslizamiento += delta
 		if tiempo_deslizamiento >= DURACION_DESLIZAR:
-			deslizando = false
-			de_pie()
+			terminar_deslizamiento()
+
 	else:
 		if not is_on_floor():
 			animated_sprite.play("salto_completo")
@@ -141,23 +119,62 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 # =======================
-# Volver a normal
+# ATAQUE
 # =======================
-func de_pie():
+func iniciar_ataque():
+	ataca = true
+	tiempo_ataque = 0.0
+	animated_sprite.play("Atack")
+
+	if mirando_derecha:
+		ataque_der.monitoring = true
+		ataque_izq.monitoring = false
+	else:
+		ataque_der.monitoring = false
+		ataque_izq.monitoring = true
+
+func terminar_ataque():
+	ataca = false
+	ataque_der.monitoring = false
+	ataque_izq.monitoring = false
+	col_pie.disabled = false
+
+# =======================
+# DESLIZAR
+# =======================
+func iniciar_deslizamiento():
+	deslizando = true
+	tiempo_deslizamiento = 0.0
+	animated_sprite.play("deslizar")
+
+	col_pie.disabled = true
+	col_deslizar.disabled = false
+	ataque_der.monitoring = false
+	ataque_izq.monitoring = false
+
+func terminar_deslizamiento():
+	deslizando = false
 	col_pie.disabled = false
 	col_deslizar.disabled = true
-	col_atk_der.disabled = true
-	col_atk_izq.disabled = true
-
-	if is_on_floor():
-		animated_sprite.play("Idle")
 
 # =======================
-# Zona de muerte
+# MUERTE
 # =======================
 func _on_espinas_body_entered(body: Node2D) -> void:
 	if body != self:
 		return
-	animated_sprite.play("Die")
 	muerto = true
 	velocity = Vector2.ZERO
+	animated_sprite.play("Die")
+
+
+func _on_atacar_der_body_entered(body: Node2D) -> void:
+	print("Golpeó a:", body.name)
+	if body.has_method("destruir"):
+		body.destruir()
+
+
+func _on_atacar_izq_body_entered(body: Node2D) -> void:
+	print("Golpeó a:", body.name)
+	if body.has_method("destruir"):
+		body.destruir()
