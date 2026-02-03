@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bhlqgsptuia6w"]
+[gd_scene load_steps=43 format=4 uid="uid://nomx6g10p2xn"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://h3ofia7kn5jh" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Idle/0_Skeleton_Warrior_Idle_000.png" id="2_l8qwv"]
