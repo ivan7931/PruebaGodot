@@ -1,93 +1,163 @@
+
 extends CharacterBody2D
 
-@export var  SPEED = 300.0
+# =======================
+# Configuración
+# =======================
+@export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
-@export var GRAVITY = 1000
-@export var DURACION_ATAQUE = 2
-var muerto: bool
-var ataca: bool = false
-var tiempo_ataque = 1
-var deslizando = false
+@export var GRAVITY = 1000.0
+@export var DURACION_ATAQUE = 0.4
+@export var DURACION_DESLIZAR = 0.6
+@export var TIEMPO_RECUPERAR_SALTOS = 2 # cooldown para recuperar saltos extra
 
-@onready var animated_sprite = $AnimatedSprite2D
+# =======================
+# Estados
+# =======================
+var muerto := false
+var ataca := false
+var deslizando := false
+var tiempo_ataque := 0.0
+var tiempo_deslizamiento := 0.0
+var mirando_derecha := true
 
+var saltos_restantes := 1
+var cooldown_saltos := 0.0
+
+# =======================
+# Nodos
+# =======================
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var col_pie: CollisionShape2D = $dePie
+@onready var col_deslizar: CollisionShape2D = $deslizar
+@onready var col_atk_der: CollisionShape2D = $atacarDer
+@onready var col_atk_izq: CollisionShape2D = $atacarIzq
+
+# =======================
+# Ready
+# =======================
+func _ready():
+	col_atk_der.disabled = true
+	col_atk_izq.disabled = true
+	col_deslizar.disabled = true
+
+# =======================
+# Física y controles
+# =======================
 func _physics_process(delta: float) -> void:
-	#SI MUERE NO RECIBE MÁS INPUTS
 	if muerto:
+		velocity = Vector2.ZERO
 		return
-	#gravedad siempre activa para que no flote
+
+	# gravedad
 	velocity.y += GRAVITY * delta
-	#código para detectar movimiento
-	var input_direccion = Input.get_vector("Izquierda","Derecha","Arriba","Abajo")
-	#IZQUIERDA(-1) DERECHA(+1)
-	var horizontal = input_direccion.x
-	#ARRIBA(-1)-ABAJO(+1)
-	var vertical = input_direccion.y
-	#SI ESTÁ EN EL SUELO Y PULSA ARRIBA -> SALTA
-	if horizontal!=0:
-		animated_sprite.flip_h = horizontal < 0
-	if is_on_floor() and vertical < 0:
-		velocity.y = JUMP_VELOCITY
-	#detectar ataque
-	if Input.is_action_just_pressed("Atacar") and not ataca:
+
+	# input
+	var input_dir = Input.get_vector("Izquierda", "Derecha", "Arriba", "Abajo")
+	var horizontal = input_dir.x
+	var vertical = input_dir.y
+
+	# mirar dirección
+	if horizontal != 0:
+		mirando_derecha = horizontal > 0
+		animated_sprite.flip_h = not mirando_derecha
+
+	# =======================
+	# ATAQUE
+	# =======================
+	if Input.is_action_just_pressed("Atacar") and not ataca and not deslizando:
 		ataca = true
-		tiempo_ataque = 1
+		tiempo_ataque = 0.0
 		animated_sprite.play("Atack")
-	# Movimiento horizontal
+
+		col_pie.disabled = true
+		col_deslizar.disabled = true
+
+		if mirando_derecha:
+			col_atk_der.disabled = false
+			col_atk_izq.disabled = true
+		else:
+			col_atk_izq.disabled = false
+			col_atk_der.disabled = true
+
+	# =======================
+	# DESLIZAR
+	# =======================
+	if Input.is_action_just_pressed("Abajo") and is_on_floor() and not deslizando and not ataca:
+		deslizando = true
+		tiempo_deslizamiento = 0.0
+		animated_sprite.play("deslizar")
+
+		col_pie.disabled = true
+		col_deslizar.disabled = false
+		col_atk_der.disabled = true
+		col_atk_izq.disabled = true
+
+	# movimiento horizontal
 	velocity.x = horizontal * SPEED
-	
-	#CODIGO PARA ANIMACIONES
+
+	# =======================
+	# SALTO
+	# =======================
+	# Recuperar saltos extra si toca pared
+	if (is_on_wall() and not is_on_floor()):
+		saltos_restantes = 1
+	elif is_on_floor():
+		saltos_restantes = 1
+
+	# cooldown para saltos extra
+	if cooldown_saltos > 0:
+		cooldown_saltos -= delta
+		if cooldown_saltos <= 0 and not is_on_wall():
+			saltos_restantes = 1
+
+	if Input.is_action_just_pressed("Arriba") and saltos_restantes > 0:
+		velocity.y = JUMP_VELOCITY
+		saltos_restantes -= 1
+		if saltos_restantes == 1:
+			cooldown_saltos = TIEMPO_RECUPERAR_SALTOS
+
+	# =======================
+	# Animaciones y estados
+	# =======================
 	if ataca:
-		atacar()
 		tiempo_ataque += delta
 		if tiempo_ataque >= DURACION_ATAQUE:
 			ataca = false
-			
-	#SI ABAJO (+1) DESLIZAR
+			de_pie()
+	elif deslizando:
+		tiempo_deslizamiento += delta
+		if tiempo_deslizamiento >= DURACION_DESLIZAR:
+			deslizando = false
+			de_pie()
 	else:
-		if is_on_floor() and vertical > 0:
-			animated_sprite.play("deslizar")
-			agacharse()
-		#SI NO ESTA EN EL SUELO SALTO
-		elif not is_on_floor():
+		if not is_on_floor():
 			animated_sprite.play("salto_completo")
-			
-		# SI DERECHA/IZQUIERDA CAMINA
-		elif horizontal !=0 :
+		elif horizontal != 0:
 			animated_sprite.play("Walk")
-			
-		#EN EL SUELO Y SIN MOVIMIENTO QUIETO
 		else:
 			animated_sprite.play("Idle")
+
 	move_and_slide()
-		
 
+# =======================
+# Volver a normal
+# =======================
+func de_pie():
+	col_pie.disabled = false
+	col_deslizar.disabled = true
+	col_atk_der.disabled = true
+	col_atk_izq.disabled = true
 
+	if is_on_floor():
+		animated_sprite.play("Idle")
 
+# =======================
+# Zona de muerte
+# =======================
 func _on_espinas_body_entered(body: Node2D) -> void:
-	if not body.is_in_group("player"):
+	if body != self:
 		return
-
-	print("ENTRÓ EN EL AREA:", body.name)
 	animated_sprite.play("Die")
 	muerto = true
-	
-func agacharse():
-	$PlayerColission.disabled=true
-	$atacar.disabled = true
-	$deslizar.disabled = false
-	
-func atacar():
-	$PlayerColission.disabled = true
-	$deslizar.disabled = true
-	$atacar.disabled = false
-	# Crear un temporizador que vuelva a la postura normal
-	var timer = get_tree().create_timer(1)
-	await timer.timeout  # espera DURACION_ATAQUE segundos
-	
-	# Volver a la postura de pie
-	de_pie()
-func de_pie():
-	$deslizar.disabled = true
-	$atacar.disabled = true
-	$PlayerColission.disabled = false
+	velocity = Vector2.ZERO

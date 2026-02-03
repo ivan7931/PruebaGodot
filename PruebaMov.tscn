@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=99 format=4 uid="uid://ot4mpn7djyuu"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://bpwqsqlekma1h" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing/0_Skeleton_Warrior_Slashing_000.png" id="2_fdd1p"]
@@ -80,6 +80,9 @@
 [ext_resource type="Texture2D" uid="uid://bhlsebv08unap" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_003.png" id="68_6blhy"]
 [ext_resource type="Texture2D" uid="uid://6alloqgucpt3" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_004.png" id="69_dsy3c"]
 [ext_resource type="Texture2D" uid="uid://kgggm7k1jc31" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Sliding/0_Skeleton_Warrior_Sliding_005.png" id="70_1icp0"]
+[ext_resource type="Texture2D" uid="uid://ogklumsgivkn" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground-Additional_06.png" id="81_uiea2"]
+[ext_resource type="Texture2D" uid="uid://ce0hm7fphijux" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground-Additional_05.png" id="82_6blhy"]
+[ext_resource type="Texture2D" uid="uid://6fni51ihdyol" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Wooden_Barrel.png" id="83_6blhy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
 radius = 39.0
@@ -89,10 +92,10 @@ height = 124.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_fdd1p")
+"texture": ExtResource("3_3m1xi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_3m1xi")
+"texture": ExtResource("2_fdd1p")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_r0h84")
@@ -354,6 +357,9 @@ size = Vector2(78.5, 90)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jwui"]
 size = Vector2(89, 48.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uiea2"]
+size = Vector2(83, 90)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qai5i"]
 texture = ExtResource("3_j7fik")
 0:0/next_alternative_id = 4
@@ -594,13 +600,21 @@ texture = ExtResource("3_j7fik")
 22:7/0 = 0
 23:7/0 = 0
 0:8/0 = 0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:8/0 = 0
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:8/0 = 0
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:8/0 = 0
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:8/0 = 0
+4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:8/0 = 0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:8/0 = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:8/0 = 0
+7:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:8/0 = 0
 9:8/0 = 0
 10:8/0 = 0
@@ -9579,14 +9593,24 @@ sources/1 = SubResource("TileSetAtlasSource_5t6u8")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1v0es"]
 size = Vector2(191, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6blhy"]
+size = Vector2(129, 295)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsy3c"]
+size = Vector2(69, 296)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1icp0"]
+size = Vector2(62, 57.5)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(363, 397)
 collision_mask = 5
 script = ExtResource("1_lnp4d")
+metadata/_edit_group_ = true
 
-[node name="PlayerColission" type="CollisionShape2D" parent="Player"]
+[node name="dePie" type="CollisionShape2D" parent="Player"]
 position = Vector2(-4, 9)
 shape = SubResource("CapsuleShape2D_scd2a")
 
@@ -9594,22 +9618,27 @@ shape = SubResource("CapsuleShape2D_scd2a")
 position = Vector2(1.0000153, 4.9999967)
 scale = Vector2(0.20916665, 0.21583335)
 sprite_frames = SubResource("SpriteFrames_dg03j")
-animation = &"deslizar"
-frame_progress = 0.9795294
+animation = &"Idle"
+frame = 14
+frame_progress = 0.27515936
 
-[node name="atacar" type="CollisionShape2D" parent="Player"]
+[node name="atacarDer" type="CollisionShape2D" parent="Player"]
 position = Vector2(36.75, 24)
 shape = SubResource("RectangleShape2D_rdbj3")
 
 [node name="deslizar" type="CollisionShape2D" parent="Player"]
-position = Vector2(-23, 50)
+position = Vector2(-4, 46)
 shape = SubResource("RectangleShape2D_3jwui")
+
+[node name="atacarIzq" type="CollisionShape2D" parent="Player"]
+position = Vector2(-31.5, 24)
+shape = SubResource("RectangleShape2D_uiea2")
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
 [node name="Foreground" type="TileMapLayer" parent="TileMapLayers"]
 position = Vector2(-3, 0)
-tile_map_data = PackedByteArray("AAACACkAAAAKAAAAAAADACkAAAALAAAAAAAEACkAAAAMAAAAAAAFACkAAAANAAAAAAAGACkAAAAOAAAAAAAHACkAAAAPAAAAAAAIACkAAAAKAAAAAAAJACkAAAALAAAAAAAKACkAAAAMAAAAAAALACkAAAANAAAAAAAMACkAAAAOAAAAAAANACkAAAAPAAAAAAAOACkAAAAKAAAAAAAPACkAAAALAAAAAAAQACkAAAAMAAAAAAARACkAAAANAAAAAAASACkAAAAOAAAAAAATACkAAAAPAAAAAAAUACkAAAAKAAAAAAAVACkAAAALAAAAAAAWACkAAAAMAAAAAAAXACkAAAANAAAAAAAYACkAAAAOAAAAAAAZACkAAAAPAAAAAAAaACkAAAAKAAAAAAAbACkAAAALAAAAAAAcACkAAAAMAAAAAAAdACkAAAANAAAAAAAeACkAAAAOAAAAAAAfACkAAAAPAAAAAAAgACkAAAAKAAAAAAAhACkAAAALAAAAAAAiACkAAAAMAAAAAAAjACkAAAANAAAAAAAkACkAAAAOAAAAAAAlACkAAAAPAAAAAAAmACkAAAAKAAAAAAAnACkAAAALAAAAAAAoACkAAAAMAAAAAAApACkAAAANAAAAAAAqACkAAAAOAAAAAAArACkAAAAPAAAAAAAsACkAAAAKAAAAAAAyACoAAAAOAAkAADAxACoAAAAPAAkAADAwACoAAAAQAAkAADAvACoAAAARAAkAADAuACoAAAASAAkAADAtACoAAAATAAkAADA4ACoAAAAOAAkAADA3ACoAAAAPAAkAADA2ACoAAAAQAAkAADA1ACoAAAARAAkAADA0ACoAAAASAAkAADAzACoAAAATAAkAADA=")
+tile_map_data = PackedByteArray("AAACACkAAAAKAAAAAAADACkAAAALAAAAAAAEACkAAAAMAAAAAAAFACkAAAANAAAAAAAGACkAAAAOAAAAAAAHACkAAAAPAAAAAAAIACkAAAAKAAAAAAAJACkAAAALAAAAAAAKACkAAAAMAAAAAAALACkAAAANAAAAAAAMACkAAAAOAAAAAAANACkAAAAPAAAAAAAOACkAAAAKAAAAAAAPACkAAAALAAAAAAAQACkAAAAMAAAAAAARACkAAAANAAAAAAASACkAAAAOAAAAAAATACkAAAAPAAAAAAAUACkAAAAKAAAAAAAVACkAAAALAAAAAAAWACkAAAAMAAAAAAAXACkAAAANAAAAAAAYACkAAAAOAAAAAAAZACkAAAAPAAAAAAAaACkAAAAKAAAAAAAbACkAAAALAAAAAAAcACkAAAAMAAAAAAAdACkAAAANAAAAAAAeACkAAAAOAAAAAAAfACkAAAAPAAAAAAAgACkAAAAKAAAAAAAhACkAAAALAAAAAAAiACkAAAAMAAAAAAAjACkAAAANAAAAAAAkACkAAAAOAAAAAAAlACkAAAAPAAAAAAAmACkAAAAKAAAAAAAnACkAAAALAAAAAAAoACkAAAAMAAAAAAApACkAAAANAAAAAAAqACkAAAAOAAAAAAArACkAAAAPAAAAAAAsACkAAAAKAAAAAAAyACoAAAAOAAkAADAxACoAAAAPAAkAADAwACoAAAAQAAkAADAvACoAAAARAAkAADAuACoAAAASAAkAADAtACoAAAATAAkAADA4ACoAAAAOAAkAADA3ACoAAAAPAAkAADA2ACoAAAAQAAkAADA1ACoAAAARAAkAADA0ACoAAAASAAkAADAzACoAAAATAAkAADAsABYAAAAAAAgAAAAtABYAAAABAAgAAAAuABYAAAACAAgAAAAvABYAAAADAAgAAAAwABYAAAAEAAgAAAAxABYAAAAFAAgAAAAyABYAAAAGAAgAAAAzABYAAAAHAAgAAAA0ABYAAAAAAAgAAAA1ABYAAAABAAgAAAA2ABYAAAACAAgAAAA3ABYAAAADAAgAAAA4ABYAAAAEAAgAAAA5ABYAAAAFAAgAAAA6ABYAAAAGAAgAAAA7ABYAAAAHAAgAAAA8ABYAAAAAAAgAAAA9ABYAAAABAAgAAAA+ABYAAAACAAgAAAA/ABYAAAADAAgAAABAABYAAAAEAAgAAABBABYAAAAFAAgAAABCABYAAAAGAAgAAABDABYAAAAHAAgAAABEABYAAAAAAAgAAABFABYAAAABAAgAAABGABYAAAACAAgAAABHABYAAAADAAgAAAA=")
 tile_set = SubResource("TileSet_5t6u8")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="TileMapLayers"]
@@ -9636,5 +9665,39 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trampas/Espinas"]
 position = Vector2(85.5, 0)
 shape = SubResource("RectangleShape2D_1v0es")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(658, 489)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+texture = ExtResource("81_uiea2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(5, 11.5)
+shape = SubResource("RectangleShape2D_6blhy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(377, 361)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("82_6blhy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(24.5, 10)
+shape = SubResource("RectangleShape2D_dsy3c")
+
+[node name="barril" type="StaticBody2D" parent="."]
+position = Vector2(924, 329)
+
+[node name="Sprite2D" type="Sprite2D" parent="barril"]
+position = Vector2(-8.0000305, -9.999999)
+scale = Vector2(0.6250005, 0.53125)
+texture = ExtResource("83_6blhy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barril"]
+position = Vector2(-8, -9)
+shape = SubResource("RectangleShape2D_1icp0")
 
 [connection signal="body_entered" from="Trampas/Espinas" to="Player" method="_on_espinas_body_entered"]
