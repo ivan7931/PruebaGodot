@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=155 format=4 uid="uid://ot4mpn7djyuu"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://bpwqsqlekma1h" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing/0_Skeleton_Warrior_Slashing_000.png" id="2_fdd1p"]
@@ -137,6 +137,8 @@
 [ext_resource type="Texture2D" uid="uid://df3iy525ygxk5" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_009.png" id="128_s4gyp"]
 [ext_resource type="Texture2D" uid="uid://bn7qdnw7sxdrc" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_010.png" id="129_jb27j"]
 [ext_resource type="Texture2D" uid="uid://ttgvwgnenucm" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_011.png" id="130_5sa2g"]
+[ext_resource type="PackedScene" uid="uid://cjmo40qyjqmvm" path="res://suelo_trampa.tscn" id="138_4w6ob"]
+[ext_resource type="Texture2D" uid="uid://cmwg0kef5fal2" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground_03.png" id="140_gp5xr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
 radius = 38.0
@@ -595,6 +597,9 @@ size = Vector2(35, 87)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nd5yc"]
 size = Vector2(33.75, 87.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gp5xr"]
+size = Vector2(42, 23)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qai5i"]
 texture = ExtResource("3_j7fik")
@@ -9842,10 +9847,10 @@ sources/1 = SubResource("TileSetAtlasSource_5t6u8")
 size = Vector2(191, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6blhy"]
-size = Vector2(129, 295)
+size = Vector2(27.5, 295)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsy3c"]
-size = Vector2(69, 296)
+size = Vector2(36, 296)
 
 [node name="Node2D" type="Node2D"]
 
@@ -9886,11 +9891,17 @@ collision_mask = 4
 position = Vector2(-61, 19)
 shape = SubResource("RectangleShape2D_nd5yc")
 
+[node name="detectar_suelo" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/detectar_suelo"]
+position = Vector2(-5, 55.5)
+shape = SubResource("RectangleShape2D_gp5xr")
+
 [node name="TileMapLayers" type="Node2D" parent="."]
 
 [node name="Foreground" type="TileMapLayer" parent="TileMapLayers"]
 position = Vector2(-3, 0)
-tile_map_data = PackedByteArray("AAAkACkAAAAOAAAAAAAlACkAAAAPAAAAAAAmACkAAAAKAAAAAAAnACkAAAALAAAAAAAoACkAAAAMAAAAAAApACkAAAANAAAAAAAqACkAAAAOAAAAAAArACkAAAAPAAAAAAAsACkAAAAKAAAAAAAyACoAAAAOAAkAADAxACoAAAAPAAkAADAwACoAAAAQAAkAADAvACoAAAARAAkAADAuACoAAAASAAkAADAtACoAAAATAAkAADA4ACoAAAAOAAkAADA3ACoAAAAPAAkAADA2ACoAAAAQAAkAADA1ACoAAAARAAkAADA0ACoAAAASAAkAADAzACoAAAATAAkAADAsABYAAAAAAAgAAAAtABYAAAABAAgAAAAuABYAAAACAAgAAAAvABYAAAADAAgAAAAwABYAAAAEAAgAAAAxABYAAAAFAAgAAAAyABYAAAAGAAgAAAAzABYAAAAHAAgAAAA0ABYAAAAAAAgAAAA1ABYAAAABAAgAAAACACgAAAAAAAgAAAADACgAAAABAAgAAAAEACgAAAACAAgAAAAFACgAAAADAAgAAAAGACgAAAAEAAgAAAAHACgAAAAFAAgAAAAIACgAAAAGAAgAAAAJACgAAAAHAAgAAAAKACgAAAAAAAgAAAALACgAAAABAAgAAAAMACgAAAACAAgAAAANACgAAAADAAgAAAAOACgAAAAEAAgAAAAPACgAAAAFAAgAAAAQACgAAAAGAAgAAAARACgAAAAHAAgAAAASACgAAAAAAAgAAAATACgAAAABAAgAAAAUACgAAAACAAgAAAAVACgAAAADAAgAAAAWACgAAAAEAAgAAAAXACgAAAAFAAgAAAAYACgAAAAGAAgAAAAZACgAAAAHAAgAAAAaACgAAAAAAAgAAAAbACgAAAABAAgAAAAcACgAAAACAAgAAAAdACgAAAADAAgAAAAeACgAAAAEAAgAAAAfACgAAAAFAAgAAAAgACgAAAAGAAgAAAAhACgAAAAHAAgAAAAiACgAAAAAAAgAAAA=")
+tile_map_data = PackedByteArray("AAAkACkAAAAOAAAAAAAlACkAAAAPAAAAAAAmACkAAAAKAAAAAAAnACkAAAALAAAAAAAoACkAAAAMAAAAAAApACkAAAANAAAAAAAqACkAAAAOAAAAAAArACkAAAAPAAAAAAAsACkAAAAKAAAAAAAyACoAAAAOAAkAADAxACoAAAAPAAkAADAwACoAAAAQAAkAADAvACoAAAARAAkAADAuACoAAAASAAkAADAtACoAAAATAAkAADA4ACoAAAAOAAkAADA3ACoAAAAPAAkAADA2ACoAAAAQAAkAADA1ACoAAAARAAkAADA0ACoAAAASAAkAADAzACoAAAATAAkAADACACgAAAAAAAgAAAADACgAAAABAAgAAAAEACgAAAACAAgAAAAFACgAAAADAAgAAAAGACgAAAAEAAgAAAAHACgAAAAFAAgAAAAIACgAAAAGAAgAAAAJACgAAAAHAAgAAAAKACgAAAAAAAgAAAALACgAAAABAAgAAAAMACgAAAACAAgAAAANACgAAAADAAgAAAAOACgAAAAEAAgAAAAPACgAAAAFAAgAAAAQACgAAAAGAAgAAAARACgAAAAHAAgAAAASACgAAAAAAAgAAAATACgAAAABAAgAAAAUACgAAAACAAgAAAAVACgAAAADAAgAAAAWACgAAAAEAAgAAAAXACgAAAAFAAgAAAAYACgAAAAGAAgAAAAZACgAAAAHAAgAAAAaACgAAAAAAAgAAAAbACgAAAABAAgAAAAcACgAAAACAAgAAAAdACgAAAADAAgAAAAeACgAAAAEAAgAAAAfACgAAAAFAAgAAAAgACgAAAAGAAgAAAAhACgAAAAHAAgAAAAiACgAAAAAAAgAAAAsABYAAAAAAAgAAAAtABYAAAABAAgAAAAuABYAAAACAAgAAAAvABYAAAADAAgAAAAwABYAAAAEAAgAAAAxABYAAAAFAAgAAAAyABYAAAAGAAgAAAAzABYAAAAHAAgAAAA0ABYAAAAAAAgAAAA1ABYAAAABAAgAAAA=")
 tile_set = SubResource("TileSet_5t6u8")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="TileMapLayers"]
@@ -9926,7 +9937,7 @@ metadata/_edit_group_ = true
 texture = ExtResource("81_uiea2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="muroDch"]
-position = Vector2(5, 11.5)
+position = Vector2(-45.75, 11.5)
 shape = SubResource("RectangleShape2D_6blhy")
 
 [node name="muroIzq" type="StaticBody2D" parent="."]
@@ -9937,7 +9948,7 @@ metadata/_edit_group_ = true
 texture = ExtResource("82_6blhy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="muroIzq"]
-position = Vector2(24.5, 10)
+position = Vector2(41, 10)
 shape = SubResource("RectangleShape2D_dsy3c")
 
 [node name="barril" parent="." instance=ExtResource("83_6blhy")]
@@ -9949,6 +9960,27 @@ position = Vector2(516, 614)
 [node name="barril3" parent="." instance=ExtResource("83_6blhy")]
 position = Vector2(725, 327)
 
+[node name="suelo_trampa" parent="." instance=ExtResource("138_4w6ob")]
+position = Vector2(1158, 377)
+
+[node name="rampa_abajo" type="Area2D" parent="."]
+position = Vector2(1218, 322)
+
+[node name="Sprite2D" type="Sprite2D" parent="rampa_abajo"]
+position = Vector2(-19, 21)
+texture = ExtResource("140_gp5xr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rampa_abajo"]
+position = Vector2(-68, 48)
+polygon = PackedVector2Array(-13, -87, -16, 35, 17, 35, 113, 37)
+
+[node name="suelo_trampa2" parent="." instance=ExtResource("138_4w6ob")]
+position = Vector2(887, 357)
+
+[node name="suelo_trampa3" parent="." instance=ExtResource("138_4w6ob")]
+position = Vector2(898, 366)
+
 [connection signal="body_entered" from="Player/atacarDer" to="Player" method="_on_atacar_der_body_entered"]
 [connection signal="body_entered" from="Player/atacarIzq" to="Player" method="_on_atacar_izq_body_entered"]
+[connection signal="area_entered" from="Player/detectar_suelo" to="Player" method="_on_detectar_suelo_area_entered"]
 [connection signal="body_entered" from="Trampas/Espinas" to="Player" method="_on_espinas_body_entered"]

@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var vida := 4
+@export var vida := 3
 
 func destruir():
 	vida -= 1

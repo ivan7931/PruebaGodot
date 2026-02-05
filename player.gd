@@ -34,6 +34,7 @@ var cooldown_saltos := 0.0
 @onready var ataque_der: Area2D = $atacarDer
 @onready var ataque_izq: Area2D = $atacarIzq
 
+
 # =======================
 # Ready
 # =======================
@@ -41,6 +42,7 @@ func _ready():
 	ataque_der.monitoring = false
 	ataque_izq.monitoring = false
 	col_deslizar.disabled = true
+	
 
 # =======================
 # Física
@@ -182,3 +184,8 @@ func _on_atacar_izq_body_entered(body: Node2D) -> void:
 	print("Golpeó a:", body.name)
 	if body.has_method("destruir"):
 		body.destruir()
+
+
+func _on_detectar_suelo_area_entered(area: Area2D) -> void:
+	if area.has_method("desaparecer"):
+		area.desaparecer()
