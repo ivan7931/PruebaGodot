@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4c2n252rp3gc"]
+
+[ext_resource type="Script" uid="uid://bv7ctlbq76rif" path="res://barril.gd" id="1_rol37"]
+[ext_resource type="Texture2D" uid="uid://6fni51ihdyol" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Wooden_Barrel.png" id="2_v3nsi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1icp0"]
+size = Vector2(62, 57.5)
+
+[node name="barril" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_rol37")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8.0000305, -9.999999)
+scale = Vector2(0.6250005, 0.53125)
+texture = ExtResource("2_v3nsi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -9)
+shape = SubResource("RectangleShape2D_1icp0")
