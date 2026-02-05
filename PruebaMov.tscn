@@ -112,7 +112,7 @@
 [ext_resource type="Texture2D" uid="uid://4d404h0exlka" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Slashing/0_Skeleton_Warrior_Run Slashing_011.png" id="82_4wsmy"]
 [ext_resource type="Texture2D" uid="uid://ce0hm7fphijux" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground-Additional_05.png" id="82_6blhy"]
 [ext_resource type="Texture2D" uid="uid://f2tis2gxbe8u" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Kicking/0_Skeleton_Warrior_Kicking_011.png" id="82_rf23d"]
-[ext_resource type="PackedScene" uid="uid://c4c2n252rp3gc" path="res://barril.tscn" id="83_6blhy"]
+[ext_resource type="PackedScene" path="res://barril.tscn" id="83_6blhy"]
 [ext_resource type="Texture2D" uid="uid://bi6io121eyvs5" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_000.png" id="95_657qb"]
 [ext_resource type="Texture2D" uid="uid://dt4caj8fj52ol" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_001.png" id="96_mr5ka"]
 [ext_resource type="Texture2D" uid="uid://b6khdb5ligwsf" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Hurt/0_Skeleton_Warrior_Hurt_002.png" id="97_22rjf"]
@@ -137,7 +137,7 @@
 [ext_resource type="Texture2D" uid="uid://df3iy525ygxk5" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_009.png" id="128_s4gyp"]
 [ext_resource type="Texture2D" uid="uid://bn7qdnw7sxdrc" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_010.png" id="129_jb27j"]
 [ext_resource type="Texture2D" uid="uid://ttgvwgnenucm" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Run Throwing/0_Skeleton_Warrior_Run Throwing_011.png" id="130_5sa2g"]
-[ext_resource type="PackedScene" uid="uid://cjmo40qyjqmvm" path="res://suelo_trampa.tscn" id="138_4w6ob"]
+[ext_resource type="PackedScene" uid="uid://17ccqdjht8k1" path="res://enemigo_volador.tscn" id="139_4w6ob"]
 [ext_resource type="Texture2D" uid="uid://cmwg0kef5fal2" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground_03.png" id="140_gp5xr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
@@ -9960,8 +9960,18 @@ position = Vector2(516, 614)
 [node name="barril3" parent="." instance=ExtResource("83_6blhy")]
 position = Vector2(725, 327)
 
-[node name="suelo_trampa" parent="." instance=ExtResource("138_4w6ob")]
+[node name="suelo_trampa" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 position = Vector2(1158, 377)
+script = null
 
 [node name="rampa_abajo" type="Area2D" parent="."]
 position = Vector2(1218, 322)
@@ -9974,11 +9984,34 @@ texture = ExtResource("140_gp5xr")
 position = Vector2(-68, 48)
 polygon = PackedVector2Array(-13, -87, -16, 35, 17, 35, 113, 37)
 
-[node name="suelo_trampa2" parent="." instance=ExtResource("138_4w6ob")]
+[node name="suelo_trampa2" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 position = Vector2(887, 357)
+script = null
 
-[node name="suelo_trampa3" parent="." instance=ExtResource("138_4w6ob")]
+[node name="suelo_trampa3" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 position = Vector2(898, 366)
+script = null
+
+[node name="EnemigoVolador" parent="." instance=ExtResource("139_4w6ob")]
+position = Vector2(880, 77)
 
 [connection signal="body_entered" from="Player/atacarDer" to="Player" method="_on_atacar_der_body_entered"]
 [connection signal="body_entered" from="Player/atacarIzq" to="Player" method="_on_atacar_izq_body_entered"]

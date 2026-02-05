@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvvu2ereu68is"]
+
+[ext_resource type="Texture2D" uid="uid://5lq3k8lrjh4d" path="res://EfectosMagicos/slash7/image/slash7_00001.png" id="1_bbinh"]
+[ext_resource type="Script" uid="uid://exurwj07q5dl" path="res://hechizo_1.gd" id="1_uq22t"]
+[ext_resource type="Texture2D" uid="uid://bdamaswpskt1k" path="res://EfectosMagicos/slash7/image/slash7_00002.png" id="2_uq22t"]
+[ext_resource type="Texture2D" uid="uid://cleln6rcojde6" path="res://EfectosMagicos/slash7/image/slash7_00003.png" id="3_7kjnt"]
+[ext_resource type="Texture2D" uid="uid://c5yjcm4y14mjw" path="res://EfectosMagicos/slash7/image/slash7_00004.png" id="4_t6clq"]
+[ext_resource type="Texture2D" uid="uid://c08l0c47vs62" path="res://EfectosMagicos/slash7/image/slash7_00005.png" id="5_ywjfi"]
+[ext_resource type="Texture2D" uid="uid://brs0g5gxe7bvl" path="res://EfectosMagicos/slash7/image/slash7_00006.png" id="6_bfm7o"]
+[ext_resource type="Texture2D" uid="uid://dd82uutgl8v57" path="res://EfectosMagicos/slash7/image/slash7_00007.png" id="7_rpe5w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ge2lu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bbinh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uq22t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7kjnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7kjnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7kjnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t6clq")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ywjfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bfm7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rpe5w")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbinh"]
+radius = 25.629408
+height = 77.75749
+
+[node name="Hechizo1" type="Area2D"]
+position = Vector2(1, -7)
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_uq22t")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ge2lu")
+animation = &"Hit"
+frame_progress = 0.90832144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.000001, 2.0861609e-07)
+rotation = 1.226284
+shape = SubResource("CapsuleShape2D_bbinh")
