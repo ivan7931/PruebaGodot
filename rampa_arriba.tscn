@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b80ls4k71shje"]
+
+[ext_resource type="Texture2D" uid="uid://bqjm2xceaooov" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground_01.png" id="1_yivwc"]
+
+[node name="rampa_arriba" type="StaticBody2D"]
+scale = Vector2(1.6, 1.6)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yivwc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-60, 63, 63, 62, 60.625122, -55.624985)
