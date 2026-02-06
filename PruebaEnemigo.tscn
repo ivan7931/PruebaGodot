@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=157 format=4 uid="uid://ot4mpn7djyuu"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_rrl80"]
 [ext_resource type="Texture2D" uid="uid://drka8121ejyr4" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing/0_Skeleton_Warrior_Slashing_001.png" id="2_ype0h"]
@@ -137,8 +137,10 @@
 [ext_resource type="Texture2D" uid="uid://ogklumsgivkn" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground-Additional_06.png" id="135_cico4"]
 [ext_resource type="Texture2D" uid="uid://ce0hm7fphijux" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground-Additional_05.png" id="136_led2c"]
 [ext_resource type="PackedScene" uid="uid://c4c2n252rp3gc" path="res://barril.tscn" id="137_x2mr0"]
-[ext_resource type="Texture2D" uid="uid://cmwg0kef5fal2" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground_03.png" id="138_onn1v"]
 [ext_resource type="PackedScene" uid="uid://17ccqdjht8k1" path="res://enemigo_volador.tscn" id="139_o1pud"]
+[ext_resource type="PackedScene" path="res://rampa_abajo.tscn" id="139_ype0h"]
+[ext_resource type="PackedScene" path="res://rampa_arriba.tscn" id="140_lt2cw"]
+[ext_resource type="PackedScene" uid="uid://cjmo40qyjqmvm" path="res://suelo_trampa.tscn" id="141_lt2cw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
 radius = 38.0
@@ -9960,20 +9962,18 @@ position = Vector2(516, 614)
 [node name="barril3" parent="." instance=ExtResource("137_x2mr0")]
 position = Vector2(320, 586)
 
-[node name="rampa_abajo" type="Area2D" parent="."]
-position = Vector2(1218, 322)
-
-[node name="Sprite2D" type="Sprite2D" parent="rampa_abajo"]
-position = Vector2(-19, 21)
-texture = ExtResource("138_onn1v")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rampa_abajo"]
-position = Vector2(-68, 48)
-polygon = PackedVector2Array(-13, -87, -16, 35, 17, 35, 113, 37)
-
 [node name="EnemigoVolador" parent="." instance=ExtResource("139_o1pud")]
-position = Vector2(793, 309)
+position = Vector2(171, 557)
 collision_layer = 36
+
+[node name="rampa_abajo2" parent="." instance=ExtResource("139_ype0h")]
+position = Vector2(840.99994, -417.99997)
+
+[node name="rampa_arriba" parent="." instance=ExtResource("140_lt2cw")]
+position = Vector2(1249.9999, 458.99997)
+
+[node name="suelo_trampa" parent="." instance=ExtResource("141_lt2cw")]
+position = Vector2(1026, 361)
 
 [connection signal="body_entered" from="Player/atacarDer" to="Player" method="_on_atacar_der_body_entered"]
 [connection signal="body_entered" from="Player/atacarIzq" to="Player" method="_on_atacar_izq_body_entered"]
