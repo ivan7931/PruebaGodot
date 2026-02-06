@@ -10,6 +10,9 @@ extends CharacterBody2D
 @export var DURACION_DESLIZAR := 0.7
 @export var TIEMPO_RECUPERAR_SALTOS := 2.0
 
+# Fuerza extra sobre rampas
+@export var FUERZA_RAMPA := 1200.0
+@export var FRICCION_RAMPA :=0.85
 # =======================
 # Estados
 # =======================
@@ -119,8 +122,27 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("Walk")
 		else:
 			animated_sprite.play("Idle")
-
+	# -----------------------
+	# Deslizamiento sobre rampas físicas
+	# -----------------------
+	if is_on_floor():
+		var pendiente_x = get_floor_normal().x # positiva → baja a la derecha, negativa → cuesta subir
+		#descendiendo
+		if pendiente_x > 0:
+			velocity.x += pendiente_x * FUERZA_RAMPA * delta
+		#subiendo
+		else:
+			velocity.x += pendiente_x * (FUERZA_RAMPA * 10) * delta
+		
+		 # Animación opcional al deslizar por pendiente
+		if not deslizando and horizontal ==0 and abs(pendiente_x) > 0.1:
+			animated_sprite.play("correr")
+	# -----------------------
+	# Aplicar movimiento
+	# -----------------------
 	move_and_slide()
+	
+
 
 # =======================
 # ATAQUE
@@ -195,8 +217,9 @@ func _on_atacar_izq_body_entered(body: Node2D) -> void:
 	elif body.is_in_group("Enemigo"):
 		body.morir()
 		
-
-
+# =======================
+# DETECTAR SUELO (TRAMPAS + RAMPAS)
+# =======================
 func _on_detectar_suelo_area_entered(area: Area2D) -> void:
 	if area.has_method("desaparecer"):
 		area.desaparecer()

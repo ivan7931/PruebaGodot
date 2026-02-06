@@ -263,7 +263,7 @@ radius = 55.0
 height = 186.0
 
 [node name="EnemigoVolador" type="CharacterBody2D" groups=["Enemigo"]]
-position = Vector2(372, 498)
+position = Vector2(394, 472)
 collision_layer = 32
 collision_mask = 5
 script = ExtResource("1_1n5ox")

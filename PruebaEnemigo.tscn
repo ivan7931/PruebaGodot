@@ -9974,7 +9974,6 @@ polygon = PackedVector2Array(-13, -87, -16, 35, 17, 35, 113, 37)
 [node name="EnemigoVolador" parent="." instance=ExtResource("139_o1pud")]
 position = Vector2(793, 309)
 collision_layer = 36
-collision_mask = 5
 
 [connection signal="body_entered" from="Player/atacarDer" to="Player" method="_on_atacar_der_body_entered"]
 [connection signal="body_entered" from="Player/atacarIzq" to="Player" method="_on_atacar_izq_body_entered"]
