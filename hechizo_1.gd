@@ -1,6 +1,5 @@
 extends Area2D
 
-@export var lifetime := 3.0
 @export var speed := 300.0
 var direction := Vector2.ZERO
 var impactado := false
@@ -9,29 +8,32 @@ var impactado := false
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
 func _ready():
-	print("✨ Hechizo creado")
-	anim.play("Walking")
-	await get_tree().create_timer(lifetime).timeout
-	queue_free()
+	anim.frame = 0
+	anim.play("Fly")
+	print("🧙‍♂️ Hechizo creado en:", global_position)
 
 func _physics_process(delta):
 	if impactado:
 		return
+
 	global_position += direction * speed * delta
+	print("🧙‍♂️ Hechizo volando:", global_position)
 
 func _on_body_entered(body):
-	print("💥 Impactó con:", body.name)
 	if impactado:
 		return
 
+	print("💥 Impactó con:", body.name)
 	impactado = true
+	speed = 0
 	collision.disabled = true
 
-	if body.is_in_group("Player"):
-		body.morir() # o recibir_daño()
+	if body.is_in_group("player"):
+		body.morir()
 
 	anim.play("Hit")
 
 func _on_animated_sprite_2d_animation_finished():
+	print("🎬 Animación terminada:", anim.animation)
 	if anim.animation == "Hit":
 		queue_free()

@@ -49,7 +49,9 @@ func _ready():
 # =======================
 func _physics_process(delta: float) -> void:
 	if muerto:
-		velocity = Vector2.ZERO
+		velocity.y += GRAVITY * delta
+		velocity.x = 0
+		move_and_slide()
 		return
 
 	# Gravedad
@@ -173,6 +175,10 @@ func _on_espinas_body_entered(body: Node2D) -> void:
 	velocity = Vector2.ZERO
 	animated_sprite.play("Die")
 
+func morir():
+	muerto = true
+	velocity = Vector2.ZERO
+	animated_sprite.play("Die")
 
 func _on_atacar_der_body_entered(body: Node2D) -> void:
 	print("Golpeó a:", body.name)

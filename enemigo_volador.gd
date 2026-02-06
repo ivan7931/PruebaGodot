@@ -15,6 +15,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if muerto:
+		atacando = false
 		return
 
 	if atacando:
@@ -22,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	var player = get_tree().get_first_node_in_group("Player")
+	var player = get_tree().get_first_node_in_group("player")
 
 	if player:
 		var dir = sign(player.global_position.x - global_position.x)
@@ -51,7 +52,7 @@ func disparar_hechizo():
 
 	spell.global_position = $SpellSpawner.global_position
 
-	var player = get_tree().get_first_node_in_group("Player")
+	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		spell.direction = (player.global_position - global_position).normalized()
 	else:
@@ -59,6 +60,8 @@ func disparar_hechizo():
 
 	get_tree().current_scene.add_child(spell)
 	print("📦 Hechizo añadido a la escena")
+	print("📍 Pos enemigo:", global_position)
+	print("📍 Pos spawner:", $SpellSpawner.global_position)
 
 func morir():
 	if muerto:
@@ -72,7 +75,7 @@ func morir():
 	queue_free()
 	
 func _on_hurtbox_area_entered(area):
-	if area.is_in_group("PlayerAttack"):
+	if area.is_in_group("AtaquePlayer"):
 		morir()
 		
 func _on_animated_sprite_2d_animation_finished():

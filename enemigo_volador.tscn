@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://17ccqdjht8k1"]
+[gd_scene format=3 uid="uid://17ccqdjht8k1"]
 
 [ext_resource type="Script" uid="uid://cjhy315unapou" path="res://enemigo_volador.gd" id="1_1n5ox"]
 [ext_resource type="PackedScene" uid="uid://bvvu2ereu68is" path="res://hechizo_1.tscn" id="2_8s4lw"]
@@ -117,7 +117,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_5f7bl")
 }],
-"loop": true,
+"loop": false,
 "name": &"CastingSpells",
 "speed": 15.0
 }, {
@@ -258,38 +258,46 @@ animations = [{
 radius = 75.0
 height = 182.0
 
-[node name="EnemigoVolador" type="CharacterBody2D"]
-position = Vector2(381, 469)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xycgs"]
+radius = 73.0
+height = 186.0
+
+[node name="EnemigoVolador" type="CharacterBody2D" unique_id=6350897]
+position = Vector2(354, 465)
 collision_layer = 32
 collision_mask = 35
 script = ExtResource("1_1n5ox")
 spell_scene = ExtResource("2_8s4lw")
+metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1665412796]
 position = Vector2(-90, 55)
 scale = Vector2(0.61538464, 0.5928571)
 sprite_frames = SubResource("SpriteFrames_0pjye")
-animation = &"Walking"
-frame_progress = 0.22473216
+animation = &"Die"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1055356897]
 position = Vector2(-98, 40)
 shape = SubResource("CapsuleShape2D_px3cd")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-92, 72)
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=702229176]
+position = Vector2(-100, 40)
+rect = Rect2(-10, -11, 22, 21)
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." unique_id=394737217]
 position = Vector2(-89, 72)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1602488077]
+position = Vector2(-9, -31)
+shape = SubResource("CapsuleShape2D_xycgs")
 
-[node name="SpellSpawner" type="Node2D" parent="."]
+[node name="SpellSpawner" type="Node2D" parent="." unique_id=433901303]
 position = Vector2(6, 43)
 
-[node name="AttackTimer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="AttackTimer" type="Timer" parent="." unique_id=1122109085]
+wait_time = 3.0
 autostart = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
