@@ -287,6 +287,7 @@ rect = Rect2(-10, -11, 22, 21)
 [node name="HurtBox" type="Area2D" parent="." groups=["Enemigo"]]
 position = Vector2(66, -52)
 collision_layer = 32
+collision_mask = 5
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
