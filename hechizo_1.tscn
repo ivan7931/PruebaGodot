@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bvvu2ereu68is"]
+[gd_scene load_steps=11 format=3 uid="uid://bvvu2ereu68is"]
 
 [ext_resource type="Texture2D" uid="uid://5lq3k8lrjh4d" path="res://EfectosMagicos/slash7/image/slash7_00001.png" id="1_bbinh"]
 [ext_resource type="Script" uid="uid://exurwj07q5dl" path="res://hechizo_1.gd" id="1_uq22t"]
@@ -53,18 +53,18 @@ animations = [{
 radius = 25.629408
 height = 77.75749
 
-[node name="Hechizo1" type="Area2D" unique_id=1149386792]
+[node name="Hechizo1" type="Area2D"]
 position = Vector2(1, -7)
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_uq22t")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1535110718]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ge2lu")
 animation = &"Hit"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1746393455]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.000001, 2.0861609e-07)
 rotation = 1.226284
 shape = SubResource("CapsuleShape2D_bbinh")

@@ -74,11 +74,14 @@ func morir():
 	await anim.animation_finished
 	queue_free()
 	
-func _on_hurtbox_area_entered(area):
-	if area.is_in_group("AtaquePlayer"):
-		morir()
+
 		
 func _on_animated_sprite_2d_animation_finished():
 	if anim.animation == "CastingSpells":
 		atacando = false
 		
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		body.morir()

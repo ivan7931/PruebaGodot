@@ -184,12 +184,17 @@ func _on_atacar_der_body_entered(body: Node2D) -> void:
 	print("Golpeó a:", body.name)
 	if body.has_method("destruir"):
 		body.destruir()
+	elif body.is_in_group("Enemigo"):
+		body.morir()
 
 
 func _on_atacar_izq_body_entered(body: Node2D) -> void:
 	print("Golpeó a:", body.name)
 	if body.has_method("destruir"):
 		body.destruir()
+	elif body.is_in_group("Enemigo"):
+		body.morir()
+		
 
 
 func _on_detectar_suelo_area_entered(area: Area2D) -> void:
