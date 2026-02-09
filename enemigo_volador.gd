@@ -14,7 +14,7 @@ func _ready():
 	print("🎞 Animación inicial")
 
 func _physics_process(delta: float) -> void:
-	if muerto:
+	if muerto:#prueba1:
 		atacando = false
 		return
 

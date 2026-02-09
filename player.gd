@@ -223,3 +223,4 @@ func _on_atacar_izq_body_entered(body: Node2D) -> void:
 func _on_detectar_suelo_area_entered(area: Area2D) -> void:
 	if area.has_method("desaparecer"):
 		area.desaparecer()
+		#prueba1
