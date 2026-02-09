@@ -259,11 +259,11 @@ radius = 52.0
 height = 182.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xycgs"]
-radius = 55.0
-height = 186.0
+radius = 61.0
+height = 194.0
 
 [node name="EnemigoVolador" type="CharacterBody2D" groups=["Enemigo"]]
-position = Vector2(394, 472)
+position = Vector2(396, 472)
 collision_layer = 32
 collision_mask = 5
 script = ExtResource("1_1n5ox")
@@ -285,7 +285,7 @@ position = Vector2(66, -50)
 rect = Rect2(-10, -11, 22, 21)
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Enemigo"]]
-position = Vector2(66, -52)
+position = Vector2(71, -52)
 collision_layer = 32
 collision_mask = 5
 metadata/_edit_group_ = true
@@ -294,11 +294,15 @@ metadata/_edit_group_ = true
 position = Vector2(1, -1)
 shape = SubResource("CapsuleShape2D_xycgs")
 
-[node name="SpellSpawner" type="Node2D" parent="."]
-position = Vector2(178, -135)
+[node name="SpellSpawnerDerecha" type="Node2D" parent="."]
+position = Vector2(159, -52)
 
 [node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
+
+[node name="SpellSpawnerIzq" type="Node2D" parent="."]
+position = Vector2(-33, -65)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

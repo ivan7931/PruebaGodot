@@ -12,14 +12,12 @@ func _ready():
 	dueño = self
 	anim.frame = 0
 	anim.play("Fly")
-	print("🧙‍♂️ Hechizo creado en:", global_position)
 
 func _physics_process(delta):
 	if impactado:
 		return
 
 	global_position += direction * speed * delta
-	print("🧙‍♂️ Hechizo volando:", global_position)
 
 func _on_body_entered(body):
 	if impactado:
@@ -38,6 +36,5 @@ func _on_body_entered(body):
 	anim.play("Hit")
 
 func _on_animated_sprite_2d_animation_finished():
-	print("🎬 Animación terminada:", anim.animation)
 	if anim.animation == "Hit":
 		queue_free()

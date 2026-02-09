@@ -28,6 +28,8 @@ func _physics_process(delta: float) -> void:
 	if player:
 		var dir = sign(player.global_position.x - global_position.x)
 		velocity.x = dir * speed
+		dir = sign(player.global_position.y - global_position.y)
+		velocity.y = dir * speed
 		anim.flip_h = dir < 0
 		anim.play("Walking")
 	else:
@@ -37,7 +39,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_attack_timer_timeout():
-	print("⏱ Timer disparó")
 	if muerto or atacando:
 		return
 
@@ -46,22 +47,30 @@ func _on_attack_timer_timeout():
 	disparar_hechizo()
 
 func disparar_hechizo():
-	print("🔥 DISPARANDO HECHIZO")
 	var spell = spell_scene.instantiate()
-	print("✨ Hechizo instanciado:", spell)
-
-	spell.global_position = $SpellSpawner.global_position
 
 	var player = get_tree().get_first_node_in_group("player")
+	
 	if player:
+		# Dirección real hacia el player
 		spell.direction = (player.global_position - global_position).normalized()
+		
+		# Elegimos el spawner del lado correcto
+		if player.global_position.x < global_position.x:
+			spell.global_position = $SpellSpawnerIzq.global_position
+		else:
+			spell.global_position = $SpellSpawnerDerecha.global_position
 	else:
-		spell.direction = Vector2.LEFT if anim.flip_h else Vector2.RIGHT
+		# Si no hay player
+		if anim.flip_h:
+			spell.direction = Vector2.LEFT
+			spell.global_position = $SpellSpawnerIzq.global_position
+		else:
+			spell.direction = Vector2.RIGHT
+			spell.global_position = $SpellSpawnerDerecha.global_position
+	
 
 	get_tree().current_scene.add_child(spell)
-	print("📦 Hechizo añadido a la escena")
-	print("📍 Pos enemigo:", global_position)
-	print("📍 Pos spawner:", $SpellSpawner.global_position)
 
 func morir():
 	if muerto:

@@ -138,8 +138,8 @@
 [ext_resource type="Texture2D" uid="uid://ce0hm7fphijux" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground-Additional_05.png" id="136_led2c"]
 [ext_resource type="PackedScene" uid="uid://c4c2n252rp3gc" path="res://barril.tscn" id="137_x2mr0"]
 [ext_resource type="PackedScene" uid="uid://17ccqdjht8k1" path="res://enemigo_volador.tscn" id="139_o1pud"]
-[ext_resource type="PackedScene" path="res://rampa_abajo.tscn" id="139_ype0h"]
-[ext_resource type="PackedScene" path="res://rampa_arriba.tscn" id="140_lt2cw"]
+[ext_resource type="PackedScene" uid="uid://yy7d1jhvvp4k" path="res://rampa_abajo.tscn" id="139_ype0h"]
+[ext_resource type="PackedScene" uid="uid://b80ls4k71shje" path="res://rampa_arriba.tscn" id="140_lt2cw"]
 [ext_resource type="PackedScene" uid="uid://cjmo40qyjqmvm" path="res://suelo_trampa.tscn" id="141_lt2cw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
@@ -9855,6 +9855,7 @@ size = Vector2(27.5, 295)
 size = Vector2(36, 296)
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(4, 0)
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(649, 279)
@@ -9870,8 +9871,7 @@ shape = SubResource("CapsuleShape2D_scd2a")
 position = Vector2(-1, -3.33786e-06)
 scale = Vector2(0.20916665, 0.21583335)
 sprite_frames = SubResource("SpriteFrames_dg03j")
-animation = &"ataque_mov"
-frame_progress = 0.34071863
+animation = &"ataque_aire"
 
 [node name="deslizar" type="CollisionShape2D" parent="Player"]
 position = Vector2(-2, 39)
@@ -9963,7 +9963,7 @@ position = Vector2(516, 614)
 position = Vector2(320, 586)
 
 [node name="EnemigoVolador" parent="." instance=ExtResource("139_o1pud")]
-position = Vector2(171, 557)
+position = Vector2(815, 228)
 collision_layer = 36
 
 [node name="rampa_abajo2" parent="." instance=ExtResource("139_ype0h")]

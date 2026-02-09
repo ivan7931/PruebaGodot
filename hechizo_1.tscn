@@ -1,38 +1,48 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvvu2ereu68is"]
+[gd_scene load_steps=15 format=3 uid="uid://bvvu2ereu68is"]
 
-[ext_resource type="Texture2D" uid="uid://5lq3k8lrjh4d" path="res://EfectosMagicos/slash7/image/slash7_00001.png" id="1_bbinh"]
 [ext_resource type="Script" uid="uid://exurwj07q5dl" path="res://hechizo_1.gd" id="1_uq22t"]
-[ext_resource type="Texture2D" uid="uid://bdamaswpskt1k" path="res://EfectosMagicos/slash7/image/slash7_00002.png" id="2_uq22t"]
-[ext_resource type="Texture2D" uid="uid://cleln6rcojde6" path="res://EfectosMagicos/slash7/image/slash7_00003.png" id="3_7kjnt"]
-[ext_resource type="Texture2D" uid="uid://c5yjcm4y14mjw" path="res://EfectosMagicos/slash7/image/slash7_00004.png" id="4_t6clq"]
+[ext_resource type="Texture2D" uid="uid://bpydw41bf51hm" path="res://EfectosMagicos/Nuevos/Fire Ball/PNG/Fire Ball_Frame_01.png" id="2_ywjfi"]
+[ext_resource type="Texture2D" uid="uid://058vro122dk6" path="res://EfectosMagicos/Nuevos/Fire Ball/PNG/Fire Ball_Frame_02.png" id="3_bfm7o"]
+[ext_resource type="Texture2D" uid="uid://d3vdu8pdgq4jr" path="res://EfectosMagicos/Nuevos/Fire Ball/PNG/Fire Ball_Frame_03.png" id="4_rpe5w"]
+[ext_resource type="Texture2D" uid="uid://8vuc24jy4rdl" path="res://EfectosMagicos/Nuevos/Fire Ball/PNG/Fire Ball_Frame_04.png" id="5_sf8yb"]
 [ext_resource type="Texture2D" uid="uid://c08l0c47vs62" path="res://EfectosMagicos/slash7/image/slash7_00005.png" id="5_ywjfi"]
 [ext_resource type="Texture2D" uid="uid://brs0g5gxe7bvl" path="res://EfectosMagicos/slash7/image/slash7_00006.png" id="6_bfm7o"]
+[ext_resource type="Texture2D" uid="uid://dl8xtsdmmsgnv" path="res://EfectosMagicos/Nuevos/Fire Ball/PNG/Fire Ball_Frame_05.png" id="6_ge2lu"]
+[ext_resource type="Texture2D" uid="uid://c8syrj7cvnwde" path="res://EfectosMagicos/Nuevos/Fire Ball/PNG/Fire Ball_Frame_06.png" id="7_o1jc1"]
 [ext_resource type="Texture2D" uid="uid://dd82uutgl8v57" path="res://EfectosMagicos/slash7/image/slash7_00007.png" id="7_rpe5w"]
+[ext_resource type="Texture2D" uid="uid://cf3ngu5t87g0e" path="res://EfectosMagicos/Nuevos/Fire Ball/PNG/Fire Ball_Frame_07.png" id="8_023bl"]
+[ext_resource type="Texture2D" uid="uid://b1wi5y1siiiwd" path="res://EfectosMagicos/Nuevos/Fire Ball/PNG/Fire Ball_Frame_08.png" id="9_tjk66"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ge2lu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_bbinh")
+"texture": ExtResource("2_ywjfi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_uq22t")
+"texture": ExtResource("3_bfm7o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_7kjnt")
+"texture": ExtResource("4_rpe5w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_7kjnt")
+"texture": ExtResource("5_sf8yb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_7kjnt")
+"texture": ExtResource("6_ge2lu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_t6clq")
+"texture": ExtResource("7_o1jc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_023bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tjk66")
 }],
 "loop": true,
 "name": &"Fly",
-"speed": 11.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -49,25 +59,26 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbinh"]
-radius = 25.629408
-height = 77.75749
+[sub_resource type="CircleShape2D" id="CircleShape2D_736m2"]
+radius = 32.649662
 
 [node name="Hechizo1" type="Area2D"]
-position = Vector2(1, -7)
+position = Vector2(103, 79)
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_uq22t")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.797791, -4.0694323)
+scale = Vector2(0.15688191, 0.15334198)
 sprite_frames = SubResource("SpriteFrames_ge2lu")
-animation = &"Hit"
+animation = &"Fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.000001, 2.0861609e-07)
+position = Vector2(-5.0000014, -4)
 rotation = 1.226284
-shape = SubResource("CapsuleShape2D_bbinh")
+shape = SubResource("CircleShape2D_736m2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
