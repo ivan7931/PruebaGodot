@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed := 80.0
-@export var life := 3
+@export var vida := 1
 @export var spell_scene: PackedScene	
 
 var estado := "idle"
@@ -83,7 +83,10 @@ func morir():
 	await anim.animation_finished
 	queue_free()
 	
-
+func siendo_atacado():
+	vida -=1
+	if vida <=0:
+		morir()
 		
 func _on_animated_sprite_2d_animation_finished():
 	if anim.animation == "CastingSpells":

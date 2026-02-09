@@ -207,7 +207,7 @@ func _on_atacar_der_body_entered(body: Node2D) -> void:
 	if body.has_method("destruir"):
 		body.destruir()
 	elif body.is_in_group("Enemigo"):
-		body.morir()
+		body.siendo_atacado()
 
 
 func _on_atacar_izq_body_entered(body: Node2D) -> void:
@@ -215,7 +215,7 @@ func _on_atacar_izq_body_entered(body: Node2D) -> void:
 	if body.has_method("destruir"):
 		body.destruir()
 	elif body.is_in_group("Enemigo"):
-		body.morir()
+		body.siendo_atacado()
 		
 # =======================
 # DETECTAR SUELO (TRAMPAS + RAMPAS)
