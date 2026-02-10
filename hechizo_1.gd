@@ -31,7 +31,7 @@ func _on_body_entered(body):
 	collision.disabled = true
 
 	if body.is_in_group("player"):
-		body.morir()
+		body.jugador_siendo_atacado()
 
 	anim.play("Hit")
 

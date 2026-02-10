@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed := 80.0
-@export var vida := 1
+@export var vida := 2
 @export var spell_scene: PackedScene	
 
 var estado := "idle"
@@ -96,4 +96,4 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body.morir()
+		body.jugador_siendo_atacado()

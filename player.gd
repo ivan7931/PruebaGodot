@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var DURACION_ATAQUE := 0.4
 @export var DURACION_DESLIZAR := 0.7
 @export var TIEMPO_RECUPERAR_SALTOS := 2.0
+@export var vida : = 3
 
 # Fuerza extra sobre rampas
 @export var FUERZA_RAMPA := 1200.0
@@ -22,6 +23,11 @@ var deslizando := false
 var tiempo_ataque := 0.0
 var tiempo_deslizamiento := 0.0
 var mirando_derecha := true
+# animacion hit
+var herido := false
+var tiempo_herido := 0.0
+@export var DURACION_HERIDO := 0.4
+
 
 var saltos_restantes := 1
 var cooldown_saltos := 0.0
@@ -54,6 +60,12 @@ func _physics_process(delta: float) -> void:
 	if muerto:
 		velocity.y += GRAVITY * delta
 		velocity.x = 0
+		move_and_slide()
+		return
+	if herido:
+		tiempo_herido -= delta
+		if tiempo_herido <= 0:
+			herido = false
 		move_and_slide()
 		return
 
@@ -224,3 +236,13 @@ func _on_detectar_suelo_area_entered(area: Area2D) -> void:
 	if area.has_method("desaparecer"):
 		area.desaparecer()
 		#prueba1
+func jugador_siendo_atacado():
+	if muerto or herido:
+		return
+	vida -=1
+	herido = true
+	tiempo_herido = DURACION_HERIDO
+	velocity = Vector2.ZERO
+	animated_sprite.play("herido")
+	if vida <=0:
+		morir()
