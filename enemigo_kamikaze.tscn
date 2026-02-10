@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://efdm4nye00ai"]
+
+[ext_resource type="Script" uid="uid://d2qvq83ivbjyf" path="res://enemigo_kamikaze.gd" id="1_bjaf0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mi6tj"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Die",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[node name="EnemigoKamikaze" type="CharacterBody2D" unique_id=1283950616]
+script = ExtResource("1_bjaf0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1279733206]
+sprite_frames = SubResource("SpriteFrames_mi6tj")
+animation = &"Run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1591297956]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1286392872]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=629165387]
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

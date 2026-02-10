@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df3amhv870mds"
-path="res://.godot/imported/Shrumal Warrior, Shrumeling - atlas0 #170014.png-a8036901ecfc189b08af3163bb2adc8e.ctex"
+uid="uid://dvipwuqjasmjs"
+path="res://.godot/imported/Muerte2.png-3a128ede53c8f99751613d852fec310a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SpinEnemy/Shrumal Warrior, Shrumeling - atlas0 #170014.png"
-dest_files=["res://.godot/imported/Shrumal Warrior, Shrumeling - atlas0 #170014.png-a8036901ecfc189b08af3163bb2adc8e.ctex"]
+source_file="res://SpinEnemy/Muerte2.png"
+dest_files=["res://.godot/imported/Muerte2.png-3a128ede53c8f99751613d852fec310a.ctex"]
 
 [params]
 

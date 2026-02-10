@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjmo40qyjqmvm"]
+[gd_scene format=3 uid="uid://cjmo40qyjqmvm"]
 
 [ext_resource type="Script" uid="uid://k3ter257ow7w" path="res://suelo_trampa.gd" id="1_8m6sg"]
 [ext_resource type="Texture2D" uid="uid://bw5qi611ul2b8" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Bridge_02.png" id="2_g6xqg"]

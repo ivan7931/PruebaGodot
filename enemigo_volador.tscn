@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://17ccqdjht8k1"]
+[gd_scene format=3 uid="uid://17ccqdjht8k1"]
 
 [ext_resource type="Script" uid="uid://cjhy315unapou" path="res://enemigo_volador.gd" id="1_1n5ox"]
 [ext_resource type="PackedScene" uid="uid://bvvu2ereu68is" path="res://hechizo_1.tscn" id="2_8s4lw"]
@@ -262,7 +262,7 @@ height = 182.0
 radius = 61.0
 height = 194.0
 
-[node name="EnemigoVolador" type="CharacterBody2D" groups=["Enemigo"]]
+[node name="EnemigoVolador" type="CharacterBody2D" unique_id=568672337 groups=["Enemigo"]]
 position = Vector2(396, 472)
 collision_layer = 32
 collision_mask = 5
@@ -270,40 +270,41 @@ script = ExtResource("1_1n5ox")
 spell_scene = ExtResource("2_8s4lw")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=142283525]
 position = Vector2(75.99998, -35.999992)
 scale = Vector2(0.61538464, 0.5928571)
 sprite_frames = SubResource("SpriteFrames_0pjye")
 animation = &"Die"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1854623457]
 position = Vector2(67, -50)
 shape = SubResource("CapsuleShape2D_px3cd")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=359223719]
 position = Vector2(66, -50)
 rect = Rect2(-10, -11, 22, 21)
 
-[node name="HurtBox" type="Area2D" parent="." groups=["Enemigo"]]
+[node name="HurtBox" type="Area2D" parent="." unique_id=2046932933 groups=["Enemigo"]]
 position = Vector2(71, -52)
 collision_layer = 32
 collision_mask = 5
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=569920448]
 position = Vector2(1, -1)
 shape = SubResource("CapsuleShape2D_xycgs")
 
-[node name="SpellSpawnerDerecha" type="Node2D" parent="."]
+[node name="SpellSpawnerDerecha" type="Node2D" parent="." unique_id=1658186729]
 position = Vector2(159, -52)
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="." unique_id=1809254000]
 wait_time = 3.0
 autostart = true
 
-[node name="SpellSpawnerIzq" type="Node2D" parent="."]
+[node name="SpellSpawnerIzq" type="Node2D" parent="." unique_id=737461198]
 position = Vector2(-33, -65)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
