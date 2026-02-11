@@ -1,4 +1,4 @@
-[gd_scene load_steps=169 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=170 format=4 uid="uid://ot4mpn7djyuu"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_rrl80"]
 [ext_resource type="Texture2D" uid="uid://bkbxy24usqn3t" path="res://Prota/Dark_Oracle_3/PNG/PNG Sequences/Slashing/0_Dark_Oracle_Slashing_000.png" id="2_h4roa"]
@@ -153,6 +153,7 @@
 [ext_resource type="Texture2D" uid="uid://isugxu45hfex" path="res://Prota/Dark_Oracle_3/PNG/PNG Sequences/Run Throwing/0_Dark_Oracle_Run Throwing_010.png" id="141_3nxv7"]
 [ext_resource type="PackedScene" uid="uid://cjmo40qyjqmvm" path="res://suelo_trampa.tscn" id="141_lt2cw"]
 [ext_resource type="Texture2D" uid="uid://bbywiai18x8w" path="res://Prota/Dark_Oracle_3/PNG/PNG Sequences/Run Throwing/0_Dark_Oracle_Run Throwing_011.png" id="142_yopqv"]
+[ext_resource type="PackedScene" uid="uid://bf6jnrxjolqcj" path="res://enemigo_bola.tscn" id="154_pgj67"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
 radius = 38.0
@@ -9906,7 +9907,7 @@ size = Vector2(36, 296)
 position = Vector2(4, 0)
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(202, 385)
+position = Vector2(70, 238)
 collision_mask = 37
 script = ExtResource("1_rrl80")
 metadata/_edit_group_ = true
@@ -9992,7 +9993,7 @@ position = Vector2(-45.75, -23)
 shape = SubResource("RectangleShape2D_6blhy")
 
 [node name="muroIzq" type="StaticBody2D" parent="."]
-position = Vector2(377, 361)
+position = Vector2(398, 261)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="muroIzq"]
@@ -10003,16 +10004,16 @@ position = Vector2(41, 10)
 shape = SubResource("RectangleShape2D_dsy3c")
 
 [node name="barril" parent="." instance=ExtResource("137_x2mr0")]
-position = Vector2(229, 617)
+position = Vector2(89, 617)
 
 [node name="barril2" parent="." instance=ExtResource("137_x2mr0")]
 position = Vector2(516, 614)
 
 [node name="barril3" parent="." instance=ExtResource("137_x2mr0")]
-position = Vector2(320, 586)
+position = Vector2(77, 350)
 
 [node name="EnemigoVolador" parent="." instance=ExtResource("139_o1pud")]
-position = Vector2(444, 432)
+position = Vector2(695, 557)
 collision_layer = 36
 
 [node name="rampa_abajo2" parent="." instance=ExtResource("139_ype0h")]
@@ -10023,6 +10024,9 @@ position = Vector2(1249.9999, 458.99997)
 
 [node name="suelo_trampa" parent="." instance=ExtResource("141_lt2cw")]
 position = Vector2(1026, 361)
+
+[node name="EnemigoBola" parent="." instance=ExtResource("154_pgj67")]
+position = Vector2(209, 540)
 
 [connection signal="body_entered" from="Player/atacarDer" to="Player" method="_on_atacar_der_body_entered"]
 [connection signal="body_entered" from="Player/atacarIzq" to="Player" method="_on_atacar_izq_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://efdm4nye00ai"]
+[gd_scene load_steps=0 format=3 uid="uid://efdm4nye00ai"]
 
 [ext_resource type="Script" uid="uid://d2qvq83ivbjyf" path="res://enemigo_kamikaze.gd" id="1_bjaf0"]
 

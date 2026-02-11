@@ -53,7 +53,7 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 		body.jugador_siendo_atacado()
 
 func morir():
-	$AttackTimer.stop()
+z	$AttackTimer.stop()
 	velocity = Vector2.ZERO
 	anim.play("Muerte")
 	await anim.animation_finished

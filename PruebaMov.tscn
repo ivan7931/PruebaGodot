@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dnbsw3aj4vvwd"]
+[gd_scene load_steps=0 format=4 uid="uid://dnbsw3aj4vvwd"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://bpwqsqlekma1h" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing/0_Skeleton_Warrior_Slashing_000.png" id="2_fdd1p"]
