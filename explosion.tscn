@@ -1,17 +1,70 @@
-[gd_scene load_steps=0 format=3 uid="uid://cs6fid3vh75tj"]
+[gd_scene format=3 uid="uid://cs6fid3vh75tj"]
 
 [ext_resource type="Script" uid="uid://qbsxxbqekp6t" path="res://explosion.gd" id="1_q7epf"]
+[ext_resource type="Texture2D" uid="uid://51e7m7jx2m6e" path="res://Explosion/PNG/Explosion_9/Explosion_2.png" id="2_ew515"]
+[ext_resource type="Texture2D" uid="uid://cw2mn2c2wpy11" path="res://Explosion/PNG/Explosion_9/Explosion_3.png" id="3_6cxdk"]
+[ext_resource type="Texture2D" uid="uid://c2twxdff4lo14" path="res://Explosion/PNG/Explosion_9/Explosion_4.png" id="4_4lvei"]
+[ext_resource type="Texture2D" uid="uid://dsmhwgpr08jom" path="res://Explosion/PNG/Explosion_9/Explosion_5.png" id="5_7rlbx"]
+[ext_resource type="Texture2D" uid="uid://ckrqa2ya6mljt" path="res://Explosion/PNG/Explosion_9/Explosion_6.png" id="6_8qgnu"]
+[ext_resource type="Texture2D" uid="uid://bn8xlilk0gta4" path="res://Explosion/PNG/Explosion_9/Explosion_7.png" id="7_x43sf"]
+[ext_resource type="Texture2D" uid="uid://d08g228675jn7" path="res://Explosion/PNG/Explosion_9/Explosion_8.png" id="8_paiiv"]
+[ext_resource type="Texture2D" uid="uid://bpxtrua4t15u" path="res://Explosion/PNG/Explosion_9/Explosion_9.png" id="9_8kihm"]
+[ext_resource type="Texture2D" uid="uid://okpefmtvphoy" path="res://Explosion/PNG/Explosion_9/Explosion_10.png" id="10_exbut"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vxas0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ew515")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6cxdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4lvei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7rlbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8qgnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x43sf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_paiiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8kihm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_exbut")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Explosion",
+"speed": 12.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4sxf"]
+radius = 251.7181
 
 [node name="Explosion" type="Area2D" unique_id=1654868038]
 collision_layer = 64
 script = ExtResource("1_q7epf")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=167006191]
+position = Vector2(6.1035156e-05, -1.999939)
+scale = Vector2(0.75875, 0.79625)
 sprite_frames = SubResource("SpriteFrames_vxas0")
+animation = &"Explosion"
+frame = 7
+frame_progress = 0.8601848
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=277161326]
+position = Vector2(-1, -2)
 shape = SubResource("CircleShape2D_j4sxf")

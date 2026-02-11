@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://dnbsw3aj4vvwd"]
+[gd_scene format=4 uid="uid://dnbsw3aj4vvwd"]
 
 [ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_lnp4d"]
 [ext_resource type="Texture2D" uid="uid://bpwqsqlekma1h" path="res://Skeleton_Warrior_1/PNG/PNG Sequences/Slashing/0_Skeleton_Warrior_Slashing_000.png" id="2_fdd1p"]
@@ -140,6 +140,7 @@
 [ext_resource type="PackedScene" uid="uid://17ccqdjht8k1" path="res://enemigo_volador.tscn" id="139_4w6ob"]
 [ext_resource type="Texture2D" uid="uid://cmwg0kef5fal2" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Ground_03.png" id="140_gp5xr"]
 [ext_resource type="PackedScene" uid="uid://cage4ctouhe5n" path="res://enemigo_bola.tscn" id="140_opghn"]
+[ext_resource type="PackedScene" uid="uid://efdm4nye00ai" path="res://enemigo_kamikaze.tscn" id="141_opghn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
 radius = 38.0
@@ -9976,6 +9977,13 @@ position = Vector2(653, 557)
 
 [node name="EnemigoBola" parent="." unique_id=1870305900 instance=ExtResource("140_opghn")]
 position = Vector2(275, 533)
+speed = 250.0
+gravity = 1000.0
+vida = 2
+tiempo_rodar = 2.0
+
+[node name="EnemigoKamikaze" parent="." unique_id=1283950616 instance=ExtResource("141_opghn")]
+position = Vector2(645, -299)
 
 [connection signal="body_entered" from="Player/atacarDer" to="Player" method="_on_atacar_der_body_entered"]
 [connection signal="body_entered" from="Player/atacarIzq" to="Player" method="_on_atacar_izq_body_entered"]

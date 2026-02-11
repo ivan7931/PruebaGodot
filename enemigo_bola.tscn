@@ -196,10 +196,14 @@ radius = 95.005264
 radius = 102.0049
 
 [node name="EnemigoBola" type="CharacterBody2D" unique_id=1870305900 groups=["Enemigo"]]
-position = Vector2(389, -269)
+position = Vector2(404, 250)
 collision_layer = 32
 collision_mask = 5
 script = ExtResource("1_gr3fd")
+speed = null
+gravity = null
+vida = null
+tiempo_rodar = null
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175186250]
