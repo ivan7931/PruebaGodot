@@ -1,6 +1,6 @@
-[gd_scene load_steps=170 format=4 uid="uid://ot4mpn7djyuu"]
+[gd_scene load_steps=178 format=4 uid="uid://ot4mpn7djyuu"]
 
-[ext_resource type="Script" uid="uid://dgeyjx7dnaqii" path="res://player.gd" id="1_rrl80"]
+[ext_resource type="Script" uid="uid://v1bb15nxvvcf" path="res://player.gd" id="1_rrl80"]
 [ext_resource type="Texture2D" uid="uid://bkbxy24usqn3t" path="res://Prota/Dark_Oracle_3/PNG/PNG Sequences/Slashing/0_Dark_Oracle_Slashing_000.png" id="2_h4roa"]
 [ext_resource type="Texture2D" uid="uid://tmv2igkyqmfq" path="res://Prota/Dark_Oracle_3/PNG/PNG Sequences/Slashing/0_Dark_Oracle_Slashing_001.png" id="3_pgj67"]
 [ext_resource type="Texture2D" uid="uid://dm10go18vc5c2" path="res://Prota/Dark_Oracle_3/PNG/PNG Sequences/Slashing/0_Dark_Oracle_Slashing_002.png" id="4_prmup"]
@@ -153,7 +153,12 @@
 [ext_resource type="Texture2D" uid="uid://isugxu45hfex" path="res://Prota/Dark_Oracle_3/PNG/PNG Sequences/Run Throwing/0_Dark_Oracle_Run Throwing_010.png" id="141_3nxv7"]
 [ext_resource type="PackedScene" uid="uid://cjmo40qyjqmvm" path="res://suelo_trampa.tscn" id="141_lt2cw"]
 [ext_resource type="Texture2D" uid="uid://bbywiai18x8w" path="res://Prota/Dark_Oracle_3/PNG/PNG Sequences/Run Throwing/0_Dark_Oracle_Run Throwing_011.png" id="142_yopqv"]
+[ext_resource type="Texture2D" uid="uid://dybpakp7ste4d" path="res://ObjetosGodot.png" id="144_mqus8"]
+[ext_resource type="Texture2D" uid="uid://cqyrosoi6tlhn" path="res://ParedesGodot.png" id="145_33r8j"]
+[ext_resource type="Texture2D" uid="uid://dwa7sr1su6nfi" path="res://PlataformasGodot.png" id="146_wxt1h"]
+[ext_resource type="PackedScene" path="res://HUD.tscn" id="146_xxfec"]
 [ext_resource type="PackedScene" uid="uid://bf6jnrxjolqcj" path="res://enemigo_bola.tscn" id="154_pgj67"]
+[ext_resource type="PackedScene" uid="uid://efdm4nye00ai" path="res://enemigo_kamikaze.tscn" id="155_prmup"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scd2a"]
 radius = 38.0
@@ -1469,11 +1474,23 @@ texture = ExtResource("131_82ajv")
 20:15/0 = 0
 21:15/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c2es5"]
+texture = ExtResource("144_mqus8")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbvyr"]
+texture = ExtResource("145_33r8j")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vh772"]
+texture = ExtResource("146_wxt1h")
+
 [sub_resource type="TileSet" id="TileSet_5t6u8"]
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qai5i")
 sources/1 = SubResource("TileSetAtlasSource_scd2a")
+sources/2 = SubResource("TileSetAtlasSource_c2es5")
+sources/3 = SubResource("TileSetAtlasSource_cbvyr")
+sources/4 = SubResource("TileSetAtlasSource_vh772")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j7fik"]
 texture = ExtResource("132_fpt2j")
@@ -9907,7 +9924,7 @@ size = Vector2(36, 296)
 position = Vector2(4, 0)
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(70, 238)
+position = Vector2(443, 51)
 collision_mask = 37
 script = ExtResource("1_rrl80")
 metadata/_edit_group_ = true
@@ -9969,6 +9986,13 @@ metadata/_edit_lock_ = true
 [node name="FollowCamera" type="Camera2D" parent="."]
 script = ExtResource("133_hrla2")
 
+[node name="HUD" parent="FollowCamera" instance=ExtResource("146_xxfec")]
+offset_left = -563.0
+offset_top = -311.0
+offset_right = -523.0
+offset_bottom = -271.0
+jugador = NodePath("../../Player")
+
 [node name="Trampas" type="Node2D" parent="."]
 
 [node name="Espinas" type="Area2D" parent="Trampas" groups=["Trampas"]]
@@ -10010,7 +10034,7 @@ position = Vector2(89, 617)
 position = Vector2(516, 614)
 
 [node name="barril3" parent="." instance=ExtResource("137_x2mr0")]
-position = Vector2(77, 350)
+position = Vector2(42, 455)
 
 [node name="EnemigoVolador" parent="." instance=ExtResource("139_o1pud")]
 position = Vector2(695, 557)
@@ -10020,13 +10044,16 @@ collision_layer = 36
 position = Vector2(840.99994, -417.99997)
 
 [node name="rampa_arriba" parent="." instance=ExtResource("140_lt2cw")]
-position = Vector2(1249.9999, 458.99997)
+position = Vector2(1273, 477.99997)
 
 [node name="suelo_trampa" parent="." instance=ExtResource("141_lt2cw")]
 position = Vector2(1026, 361)
 
 [node name="EnemigoBola" parent="." instance=ExtResource("154_pgj67")]
-position = Vector2(209, 540)
+position = Vector2(280, 537)
+
+[node name="EnemigoKamikaze" parent="." instance=ExtResource("155_prmup")]
+position = Vector2(639, -289)
 
 [connection signal="body_entered" from="Player/atacarDer" to="Player" method="_on_atacar_der_body_entered"]
 [connection signal="body_entered" from="Player/atacarIzq" to="Player" method="_on_atacar_izq_body_entered"]
