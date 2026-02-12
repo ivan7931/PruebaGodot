@@ -242,7 +242,9 @@ func jugador_siendo_atacado():
 	vida -=1
 	herido = true
 	tiempo_herido = DURACION_HERIDO
-	velocity = Vector2.ZERO
+	# Knockback
+	var direccion_knockback = -1 if mirando_derecha else 1
+	velocity = Vector2(direccion_knockback * 200, -200)  # retroceso hacia atrás y arriba
 	animated_sprite.play("herido")
-	if vida <=0:
+	if vida <= 0:
 		morir()
