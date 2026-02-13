@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://bowjlms1gf0mf"]
+
+[ext_resource type="Script" uid="uid://d1kwi25fhici7" path="res://moneda.gd" id="1_xcrop"]
+[ext_resource type="Texture2D" uid="uid://bnyfibk7l484d" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Collectable Object/Coin_01.png" id="2_q66eu"]
+[ext_resource type="Texture2D" uid="uid://dum0kkk82fq8m" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Collectable Object/Coin_02.png" id="3_brufe"]
+[ext_resource type="Texture2D" uid="uid://tow11sa7qr28" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Collectable Object/Coin_03.png" id="4_kesql"]
+[ext_resource type="Texture2D" uid="uid://dejefuqo6movj" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Collectable Object/Coin_04.png" id="5_n6ji3"]
+[ext_resource type="Texture2D" uid="uid://dmo4mcq3san08" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Collectable Object/Coin_05.png" id="6_f4eci"]
+[ext_resource type="Texture2D" uid="uid://blx7l4c118hj6" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Collectable Object/Coin_06.png" id="7_txfql"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvntv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q66eu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_brufe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kesql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n6ji3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f4eci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_txfql")
+}],
+"loop": true,
+"name": &"moneda_animacion",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13cds"]
+radius = 13.601471
+
+[node name="moneda" type="Area2D"]
+position = Vector2(243, 15)
+script = ExtResource("1_xcrop")
+metadata/_edit_group_ = true
+
+[node name="animacion_moneda" type="AnimatedSprite2D" parent="."]
+position = Vector2(-43.5, 45)
+scale = Vector2(0.27343747, 0.265625)
+sprite_frames = SubResource("SpriteFrames_xvntv")
+animation = &"moneda_animacion"
+frame_progress = 0.48425388
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-43, 45)
+shape = SubResource("CircleShape2D_13cds")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

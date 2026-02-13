@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk5u2f61dymf3"]
+
+[ext_resource type="Texture2D" uid="uid://de5ugf8cebtru" path="res://Prota/Dark_Oracle_3/PNG/Vector Parts/Head.png" id="1_t2nme"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 42.0
+offset_bottom = 36.0
+texture = ExtResource("1_t2nme")
+expand_mode = 2
+stretch_mode = 6
