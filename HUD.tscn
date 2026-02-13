@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtjr7ayaor5fl"]
+[gd_scene load_steps=2 format=3 uid="uid://dtjr7ayaor5fl"]
 
 [ext_resource type="Script" uid="uid://5tpqulyrivqt" path="res://HUD.gd" id="1_k5de2"]
-[ext_resource type="Texture2D" uid="uid://de5ugf8cebtru" path="res://Prota/Dark_Oracle_3/PNG/Vector Parts/Head.png" id="2_efote"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -17,20 +16,12 @@ offset_top = 14.0
 offset_right = 530.0
 offset_bottom = 71.0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_efote")
-expand_mode = 2
-stretch_mode = 6
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_efote")
-expand_mode = 2
-stretch_mode = 6
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_efote")
-expand_mode = 2
-stretch_mode = 6
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 930.0
+offset_top = 15.0
+offset_right = 1093.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 34
+text = "Score : 0"
+horizontal_alignment = 2
