@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cx53eptotdtv6"]
+[gd_scene format=3 uid="uid://cx53eptotdtv6"]
 
-[ext_resource type="Script" uid="uid://c0ulib3sg6p34" path="res://menu_inicial.gd" id="1_eap13"]
+[ext_resource type="Script" path="res://menu_inicial.gd" id="1_eap13"]
 [ext_resource type="Texture2D" uid="uid://vc6o7sc0mylm" path="res://1 Tiles/Fondo.png" id="1_u4fxu"]
-[ext_resource type="PackedScene" uid="uid://ot4mpn7djyuu" path="res://PruebaEnemigo.tscn" id="2_0tvy4"]
+[ext_resource type="PackedScene" uid="uid://dnbsw3aj4vvwd" path="res://PruebaMov.tscn" id="2_eap13"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3exob"]
 bg_color = Color(0.16862746, 0.12156863, 0.23921569, 1)
@@ -117,7 +117,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="MenuInicial" type="Control"]
+[node name="MenuInicial" type="Control" unique_id=48458724]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,9 +125,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eap13")
-escena_juego = ExtResource("2_0tvy4")
+escena_juego = ExtResource("2_eap13")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1134824481]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 649.0
@@ -135,14 +135,14 @@ texture = ExtResource("1_u4fxu")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=5221911]
 layout_mode = 0
 offset_left = 417.0
 offset_top = 32.0
 offset_right = 755.0
 offset_bottom = 149.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1193131029]
 layout_mode = 0
 offset_left = 466.0
 offset_top = 342.0
@@ -151,7 +151,7 @@ offset_bottom = 621.0
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1173067570]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9411765, 0.9019608, 1, 1)
 theme_override_colors/font_outline_color = Color(0.5568628, 0.36078432, 1, 1)
@@ -162,7 +162,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_55v0k")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u4fxu")
 text = "Jugar"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=2076846512]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9411765, 0.9019608, 1, 1)
 theme_override_colors/font_outline_color = Color(0.5568628, 0.36078432, 1, 1)
@@ -173,7 +173,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pme7s")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tvy4")
 text = "Opciones"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=279645456]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9411765, 0.9019608, 1, 1)
 theme_override_colors/font_outline_color = Color(0.5568628, 0.36078432, 1, 1)

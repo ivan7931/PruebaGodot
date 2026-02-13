@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
-@export var speed := 250.0
+@export var speed := 500.0
 @export var gravity := 1000.0
 @export var vida := 2
-@export var tiempo_rodar := 2.0
+@export var tiempo_rodar := 4.0
+@export var moneda_scene: PackedScene
+@export var probabilidad_moneda := 0.8
 
 var estado :="Idle"
 var direccion := 1 #Para que empiece hacia la izquierda
@@ -55,8 +57,17 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 func morir():
 	#$AttackTimer.stop()
 	velocity = Vector2.ZERO
+	$CollisionShape2D.disabled = true
+	$HurtBox/CollisionShape2D.disabled = true
 	anim.play("Muerte")
+	if get_parent().has_node("Meta"):
+		var meta = get_parent().get_node("Meta")
+		meta.activar()
 	await anim.animation_finished
+	if moneda_scene != null and randf() < probabilidad_moneda:
+		var moneda = moneda_scene.instantiate()
+		get_parent().add_child(moneda)
+		moneda.global_position = global_position
 	queue_free()
 	
 func siendo_atacado():

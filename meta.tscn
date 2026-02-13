@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://qoy71dv2m3li"]
+
+[ext_resource type="Script" uid="uid://b8x2oqpgar68r" path="res://meta.gd" id="1_75i0q"]
+[ext_resource type="Texture2D" uid="uid://swfc7tl7uo2b" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Collectable Object/Diamond.png" id="2_s0fer"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7corq"]
+radius = 33.13608
+
+[node name="Meta" type="Area2D" unique_id=989074708]
+script = ExtResource("1_75i0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1143719887]
+shape = SubResource("CircleShape2D_7corq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=25527898]
+position = Vector2(-1.0000153, -1)
+scale = Vector2(0.4453125, 0.4921875)
+texture = ExtResource("2_s0fer")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

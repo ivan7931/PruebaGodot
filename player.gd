@@ -4,8 +4,8 @@ extends CharacterBody2D
 # Configuración
 # =======================
 @export var SPEED := 300.0
-@export var JUMP_VELOCITY := -400.0
-@export var GRAVITY := 1000.0
+@export var JUMP_VELOCITY := -470.0
+@export var GRAVITY := 900.0
 @export var DURACION_ATAQUE := 0.4
 @export var DURACION_DESLIZAR := 0.7
 @export var TIEMPO_RECUPERAR_SALTOS := 2.0
@@ -18,6 +18,7 @@ extends CharacterBody2D
 # Estados
 # =======================
 var muerto := false
+var invulnerable := false
 var ataca := false
 var deslizando := false
 var tiempo_ataque := 0.0
@@ -27,9 +28,11 @@ var mirando_derecha := true
 var herido := false
 var tiempo_herido := 0.0
 @export var DURACION_HERIDO := 0.4
+@export var DURACION_INVULNERABLE := 1.0
 
 
 var saltos_restantes := 1
+var tiempo_parpadeo := 0.0
 var cooldown_saltos := 0.0
 
 # =======================
@@ -66,8 +69,17 @@ func _physics_process(delta: float) -> void:
 		tiempo_herido -= delta
 		if tiempo_herido <= 0:
 			herido = false
-		move_and_slide()
-		return
+	
+# Parpadeo al caer
+	if invulnerable:
+		tiempo_parpadeo -= delta
+		
+		# alternar transparencia
+		animated_sprite.modulate.a = 0.3 if int(tiempo_parpadeo * 20) % 2 == 0 else 1.0
+		
+		if tiempo_parpadeo <= 0:
+			invulnerable = false
+			animated_sprite.modulate.a = 1.0
 
 	# Gravedad
 	velocity.y += GRAVITY * delta
@@ -82,7 +94,8 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = not mirando_derecha
 
 	# Movimiento horizontal
-	velocity.x = horizontal * SPEED
+	if not herido:
+		velocity.x = horizontal * SPEED
 
 	# =======================
 	# Recuperar saltos (suelo + wall jump)
@@ -129,11 +142,14 @@ func _physics_process(delta: float) -> void:
 
 	else:
 		if not is_on_floor():
-			animated_sprite.play("salto_completo")
+			if not herido:
+				animated_sprite.play("salto_completo")
 		elif horizontal != 0:
-			animated_sprite.play("Walk")
+			if not herido:
+				animated_sprite.play("Walk")
 		else:
-			animated_sprite.play("Idle")
+			if not herido:
+				animated_sprite.play("Idle")
 	# -----------------------
 	# Deslizamiento sobre rampas físicas
 	# -----------------------
@@ -164,9 +180,11 @@ func iniciar_ataque():
 	tiempo_ataque = 0.0
 	# Animación según si se mueve o no
 	if velocity.x != 0:  # Si está en movimiento
-		animated_sprite.play("ataque_mov")
+		if not herido:
+			animated_sprite.play("ataque_mov")
 	else:               # Si está quieto
-		animated_sprite.play("Atack")
+		if not herido:
+			animated_sprite.play("Atack")
 
 	if mirando_derecha:
 		ataque_der.monitoring = true
@@ -187,7 +205,8 @@ func terminar_ataque():
 func iniciar_deslizamiento():
 	deslizando = true
 	tiempo_deslizamiento = 0.0
-	animated_sprite.play("deslizar")
+	if not herido:
+		animated_sprite.play("deslizar")
 
 	col_pie.disabled = true
 	col_deslizar.disabled = false
@@ -205,9 +224,7 @@ func terminar_deslizamiento():
 func _on_espinas_body_entered(body: Node2D) -> void:
 	if body != self:
 		return
-	muerto = true
-	velocity = Vector2.ZERO
-	animated_sprite.play("Die")
+	jugador_siendo_atacado()
 
 func morir():
 	muerto = true
@@ -236,15 +253,24 @@ func _on_detectar_suelo_area_entered(area: Area2D) -> void:
 	if area.has_method("desaparecer"):
 		area.desaparecer()
 		#prueba1
+		
 func jugador_siendo_atacado():
-	if muerto or herido:
+	if muerto or invulnerable:
 		return
-	vida -=1
+	
+	vida -= 1
+	
 	herido = true
 	tiempo_herido = DURACION_HERIDO
+	
+	invulnerable = true
+	tiempo_parpadeo = DURACION_INVULNERABLE
+	
 	# Knockback
 	var direccion_knockback = -1 if mirando_derecha else 1
-	velocity = Vector2(direccion_knockback * 200, -200)  # retroceso hacia atrás y arriba
+	velocity = Vector2(direccion_knockback * 200, -200)
+	
 	animated_sprite.play("herido")
+	
 	if vida <= 0:
 		morir()

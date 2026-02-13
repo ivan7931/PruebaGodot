@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://17ccqdjht8k1"]
 
-[ext_resource type="Script" uid="uid://cjhy315unapou" path="res://enemigo_volador.gd" id="1_1n5ox"]
+[ext_resource type="Script" uid="uid://dwgqiy8o04te5" path="res://enemigo_volador.gd" id="1_1n5ox"]
 [ext_resource type="PackedScene" uid="uid://bvvu2ereu68is" path="res://hechizo_1.tscn" id="2_8s4lw"]
 [ext_resource type="Texture2D" uid="uid://cnre3ok7113qo" path="res://EnemigoVolador/PNG/Wraith_02/PNG Sequences/Casting Spells/Wraith_02_Casting Spells_000.png" id="2_xycgs"]
 [ext_resource type="Texture2D" uid="uid://dedwwh2t3eya8" path="res://EnemigoVolador/PNG/Wraith_02/PNG Sequences/Casting Spells/Wraith_02_Casting Spells_001.png" id="3_8s4lw"]
@@ -262,8 +262,11 @@ height = 182.0
 radius = 61.0
 height = 194.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xycgs"]
+radius = 563.008
+
 [node name="EnemigoVolador" type="CharacterBody2D" unique_id=568672337 groups=["Enemigo"]]
-position = Vector2(396, 472)
+position = Vector2(390, 461)
 collision_layer = 32
 collision_mask = 5
 script = ExtResource("1_1n5ox")
@@ -304,7 +307,15 @@ autostart = true
 [node name="SpellSpawnerIzq" type="Node2D" parent="." unique_id=737461198]
 position = Vector2(-33, -65)
 
+[node name="Detector" type="Area2D" parent="." unique_id=1403881329]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=1883047141]
+position = Vector2(69, -50)
+shape = SubResource("CircleShape2D_xycgs")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]

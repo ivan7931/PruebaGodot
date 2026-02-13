@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
 
-@export var speed := 250.0
+@export var speed := 450.0
 @export var gravity := 1000.0
 @export var vida := 1
 @export var explosion_scene: PackedScene
 @export var tiempo_preparacion := 1.5
+@export var moneda_scene: PackedScene
+@export var probabilidad_moneda := 0.8
 
 var direccion := Vector2.ZERO
 var muerto := false
@@ -50,6 +52,10 @@ func morir():
 	anim.play("Die")
 
 	await anim.animation_finished
+	if moneda_scene != null and randf() < probabilidad_moneda:
+		var moneda = moneda_scene.instantiate()
+		get_parent().add_child(moneda)
+		moneda.global_position = global_position
 	queue_free()
 	
 func explotar():

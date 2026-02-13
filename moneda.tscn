@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bowjlms1gf0mf"]
+[gd_scene format=3 uid="uid://bowjlms1gf0mf"]
 
 [ext_resource type="Script" uid="uid://d1kwi25fhici7" path="res://moneda.gd" id="1_xcrop"]
 [ext_resource type="Texture2D" uid="uid://bnyfibk7l484d" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Collectable Object/Coin_01.png" id="2_q66eu"]

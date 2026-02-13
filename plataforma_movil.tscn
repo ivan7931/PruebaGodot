@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c2pk2odhdqmpm"]
+
+[ext_resource type="Script" uid="uid://bwiy6hpvsoyps" path="res://plataforma_movil.gd" id="1_rbb1a"]
+[ext_resource type="Texture2D" uid="uid://cly6gmxhxuwvm" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Bridge_01.png" id="2_yegm7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lb2v"]
+size = Vector2(81, 32)
+
+[node name="PlataformaMovil" type="CharacterBody2D" unique_id=783228523]
+script = ExtResource("1_rbb1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2120576968]
+position = Vector2(9.000001, 5.5)
+scale = Vector2(1.28125, 1.171875)
+texture = ExtResource("2_yegm7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1225336000]
+position = Vector2(8.5, 3)
+shape = SubResource("RectangleShape2D_0lb2v")
+
+[node name="Timer" type="Timer" parent="." unique_id=1123065805]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

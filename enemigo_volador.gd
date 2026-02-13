@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
-@export var speed := 80.0
+@export var speed := 120.0
 @export var vida := 2
-@export var spell_scene: PackedScene	
+@export var spell_scene: PackedScene
+@export var moneda_scene: PackedScene
+@export var probabilidad_moneda := 0.8	
 
+var persiguiendo := false
+var player_obj : Node2D = null
 var estado := "idle"
 var muerto := false
 var atacando := false
@@ -23,23 +27,20 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	var player = get_tree().get_first_node_in_group("player")
-
-	if player:
-		var dir = sign(player.global_position.x - global_position.x)
-		velocity.x = dir * speed
-		dir = sign(player.global_position.y - global_position.y)
-		velocity.y = dir * speed
-		anim.flip_h = dir < 0
+	if persiguiendo and player_obj:
+		var direction = (player_obj.global_position - global_position).normalized()
+		velocity = direction * speed
+		
+		anim.flip_h = direction.x < 0
 		anim.play("Walking")
 	else:
-		velocity.x = 0
+		velocity = Vector2.ZERO
 		anim.play("Idle")
 
 	move_and_slide()
 
 func _on_attack_timer_timeout():
-	if muerto or atacando:
+	if muerto or atacando or not persiguiendo:
 		return
 
 	atacando = true
@@ -77,10 +78,16 @@ func morir():
 		return
 
 	muerto = true
+	$CollisionShape2D.disabled = true
+	$HurtBox/CollisionShape2D.disabled = true
 	$AttackTimer.stop()
 	velocity = Vector2.ZERO
 	anim.play("Die")
 	await anim.animation_finished
+	if moneda_scene != null and randf() < probabilidad_moneda:
+		var moneda = moneda_scene.instantiate()
+		get_parent().add_child(moneda)
+		moneda.global_position = global_position
 	queue_free()
 	
 func siendo_atacado():
@@ -97,3 +104,16 @@ func _on_animated_sprite_2d_animation_finished():
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.jugador_siendo_atacado()
+
+
+func _on_detector_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		persiguiendo = true
+		player_obj = body
+
+
+func _on_detector_body_exited(body: Node2D) -> void:
+	if body == player_obj:
+		persiguiendo = false
+		player_obj = null
+		atacando = false
