@@ -9,5 +9,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		body.Die()
+		if body.has_method("jugador_siendo_atacado"):
+			body.jugador_siendo_atacado()
 		

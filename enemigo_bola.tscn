@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cage4ctouhe5n"]
+[gd_scene format=3 uid="uid://cage4ctouhe5n"]
 
 [ext_resource type="Texture2D" uid="uid://dtji68ep3lwyw" path="res://SpinEnemy/SpinEnemy.png" id="1_gpywo"]
 [ext_resource type="Script" uid="uid://cmd6u0i8iqta" path="res://enemigo_bola.gd" id="1_gr3fd"]
@@ -196,33 +196,33 @@ radius = 95.005264
 [sub_resource type="CircleShape2D" id="CircleShape2D_us3se"]
 radius = 102.0049
 
-[node name="EnemigoBola" type="CharacterBody2D" groups=["Enemigo"]]
-position = Vector2(389, -269)
+[node name="EnemigoBola" type="CharacterBody2D" unique_id=1870305900 groups=["Enemigo"]]
+position = Vector2(404, 250)
 collision_layer = 32
 collision_mask = 5
 script = ExtResource("1_gr3fd")
 moneda_scene = ExtResource("2_i6xtj")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175186250]
 position = Vector2(7.5, -2)
 sprite_frames = SubResource("SpriteFrames_4i42s")
 animation = &"Idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=798368069]
 position = Vector2(1.5, 0)
 shape = SubResource("CircleShape2D_sld6c")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." unique_id=1978284036]
 position = Vector2(1, 0)
 collision_layer = 32
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1921131334]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_us3se")
 
-[node name="SpinTimer" type="Timer" parent="."]
+[node name="SpinTimer" type="Timer" parent="." unique_id=1125451029]
 wait_time = 3.0
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
