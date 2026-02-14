@@ -268,7 +268,7 @@ radius = 563.008
 [node name="EnemigoVolador" type="CharacterBody2D" unique_id=568672337 groups=["Enemigo"]]
 position = Vector2(390, 461)
 collision_layer = 32
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_1n5ox")
 spell_scene = ExtResource("2_8s4lw")
 metadata/_edit_group_ = true

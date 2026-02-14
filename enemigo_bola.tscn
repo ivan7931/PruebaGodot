@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dtji68ep3lwyw" path="res://SpinEnemy/SpinEnemy.png" id="1_gpywo"]
 [ext_resource type="Script" uid="uid://cmd6u0i8iqta" path="res://enemigo_bola.gd" id="1_gr3fd"]
+[ext_resource type="PackedScene" uid="uid://bowjlms1gf0mf" path="res://moneda.tscn" id="2_i6xtj"]
 [ext_resource type="Texture2D" uid="uid://bwter7d7mx3fo" path="res://SpinEnemy/spinIdle.png" id="2_wdx3f"]
 [ext_resource type="Texture2D" uid="uid://cxi2y3bop8din" path="res://SpinEnemy/Muerte.png" id="3_i6xtj"]
 [ext_resource type="Texture2D" uid="uid://dvipwuqjasmjs" path="res://SpinEnemy/Muerte2.png" id="4_xeyot"]
@@ -200,6 +201,7 @@ position = Vector2(404, 250)
 collision_layer = 32
 collision_mask = 5
 script = ExtResource("1_gr3fd")
+moneda_scene = ExtResource("2_i6xtj")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175186250]

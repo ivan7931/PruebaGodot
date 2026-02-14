@@ -10,9 +10,14 @@ func _ready():
 func activar():
 	sprite.visible = true
 	col.disabled = false
-	sprite.play("activado")    # Opcional: animación de aparecer
 
+func _physics_process(delta):
+	var bodies = get_overlapping_bodies()
+	if bodies.size() > 0:
+		print("Detectando:", bodies)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body == self:
-		get_tree().change_scene("res://NivelSiguiente.tscn")
+	print("Final")
+	if body.is_in_group("player"):
+		print("Final")
+		get_tree().change_scene("res://Final.tscn")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2qvq83ivbjyf" path="res://enemigo_kamikaze.gd" id="1_bjaf0"]
 [ext_resource type="PackedScene" uid="uid://cs6fid3vh75tj" path="res://explosion.tscn" id="2_cykx2"]
 [ext_resource type="Texture2D" uid="uid://dflhhl5t3ejg5" path="res://Explosion/EnemigoKami/Caer.png" id="2_vx4vx"]
+[ext_resource type="PackedScene" uid="uid://bowjlms1gf0mf" path="res://moneda.tscn" id="3_45306"]
 [ext_resource type="Texture2D" uid="uid://e11lxwh4jb1p" path="res://Explosion/EnemigoKami/IdleKami.png" id="3_cykx2"]
 [ext_resource type="Texture2D" uid="uid://c8nos67bouiwp" path="res://Explosion/EnemigoKami/LanzarseKami.png" id="4_45306"]
 
@@ -204,8 +205,10 @@ height = 240.0
 radius = 485.14844
 
 [node name="EnemigoKamikaze" type="CharacterBody2D" unique_id=1283950616]
+collision_layer = 32
 script = ExtResource("1_bjaf0")
 explosion_scene = ExtResource("2_cykx2")
+moneda_scene = ExtResource("3_45306")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1279733206]

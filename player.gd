@@ -24,6 +24,7 @@ var deslizando := false
 var tiempo_ataque := 0.0
 var tiempo_deslizamiento := 0.0
 var mirando_derecha := true
+var score := 0
 # animacion hit
 var herido := false
 var tiempo_herido := 0.0
@@ -54,6 +55,7 @@ func _ready():
 	ataque_der.monitoring = false
 	ataque_izq.monitoring = false
 	col_deslizar.disabled = true
+	score = 0
 	
 
 # =======================
