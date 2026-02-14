@@ -4,6 +4,12 @@ extends CharacterBody2D
 @export var vida := 2
 @export var spell_scene: PackedScene	
 
+# ==========================
+# MONEDAS AL MORIR
+# ==========================
+@export var moneda_scene: PackedScene      
+@export var probabilidad_moneda := 0.8     # 0 = nunca, 1 = siempre
+
 var estado := "idle"
 var muerto := false
 var atacando := false
@@ -81,6 +87,11 @@ func morir():
 	velocity = Vector2.ZERO
 	anim.play("Die")
 	await anim.animation_finished
+	#Posibilidad de soltar moneda
+	if moneda_scene != null and randf() < probabilidad_moneda:
+		var moneda = moneda_scene.instantiate()
+		get_parent().add_child(moneda)
+		moneda.global_position = global_position   # Aparece en la posición del enemigo
 	queue_free()
 	
 func siendo_atacado():

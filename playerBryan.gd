@@ -9,19 +9,12 @@ extends CharacterBody2D
 @export var DURACION_ATAQUE := 0.4
 @export var DURACION_DESLIZAR := 0.7
 @export var TIEMPO_RECUPERAR_SALTOS := 2.0
-@export var vida : = 3	
 
-#========================================
-#vARIABLES PARA SISTEMA DE PUNTOS Y GANAR VIDAS
-#========================================
-var score :=0  # Puntos totales
-var monedas_recogidas :=0 # Contador de monedas físicas
-var monedas_para_vida :=10 # Cuántas monedas físicas hacen ganar 1 vida
-var  vida_base :=3 # Vida base del jugador
 
 # Fuerza extra sobre rampas
 @export var FUERZA_RAMPA := 1200.0
 @export var FRICCION_RAMPA :=0.85
+
 # =======================
 # Estados
 # =======================
@@ -31,23 +24,19 @@ var deslizando := false
 var tiempo_ataque := 0.0
 var tiempo_deslizamiento := 0.0
 var mirando_derecha := true
-# animacion hit
-var herido := false
-var tiempo_herido := 0.0
-@export var DURACION_HERIDO := 0.4
-
-
+# =======================
+# Saltos
+# =======================
 var saltos_restantes := 1
 var cooldown_saltos := 0.0
+
 
 # =======================
 # Nodos
 # =======================
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
 @onready var col_pie: CollisionShape2D = $dePie
 @onready var col_deslizar: CollisionShape2D = $deslizar
-
 @onready var ataque_der: Area2D = $atacarDer
 @onready var ataque_izq: Area2D = $atacarIzq
 
@@ -66,15 +55,7 @@ func _ready():
 # =======================
 func _physics_process(delta: float) -> void:
 	if muerto:
-		velocity.y += GRAVITY * delta
-		velocity.x = 0
-		move_and_slide()
-		return
-	if herido:
-		tiempo_herido -= delta
-		if tiempo_herido <= 0:
-			herido = false
-		move_and_slide()
+		velocity = Vector2.ZERO
 		return
 
 	# Gravedad
@@ -162,8 +143,6 @@ func _physics_process(delta: float) -> void:
 	# -----------------------
 	move_and_slide()
 	
-
-
 # =======================
 # ATAQUE
 # =======================
@@ -217,71 +196,23 @@ func _on_espinas_body_entered(body: Node2D) -> void:
 	velocity = Vector2.ZERO
 	animated_sprite.play("Die")
 
-func morir():
-	muerto = true
-	velocity = Vector2.ZERO
-	animated_sprite.play("Die")
 
 func _on_atacar_der_body_entered(body: Node2D) -> void:
 	print("Golpeó a:", body.name)
 	if body.has_method("destruir"):
 		body.destruir()
-	elif body.is_in_group("Enemigo"):
-		body.siendo_atacado()
 
 
 func _on_atacar_izq_body_entered(body: Node2D) -> void:
 	print("Golpeó a:", body.name)
 	if body.has_method("destruir"):
 		body.destruir()
-	elif body.is_in_group("Enemigo"):
-		body.siendo_atacado()
-		
+
+
 # =======================
 # DETECTAR SUELO (TRAMPAS + RAMPAS)
 # =======================
+
 func _on_detectar_suelo_area_entered(area: Area2D) -> void:
 	if area.has_method("desaparecer"):
 		area.desaparecer()
-		#prueba1
-func jugador_siendo_atacado():
-	if muerto or herido:
-		return
-	vida -=1
-	herido = true
-	tiempo_herido = DURACION_HERIDO
-	# Knockback
-	var direccion_knockback = -1 if mirando_derecha else 1
-	velocity = Vector2(direccion_knockback * 200, -200)  # retroceso hacia atrás y arriba
-	animated_sprite.play("herido")
-	if vida <= 0:
-		morir()
-
-
-#=======
-#SISTEMA MONEDAS
-#======
-
-func sumar_score(cantidad):
-	# Sumar puntos
-	score+=cantidad
-	print("Score:",score)
-	# Contar monedas físicas
-	# Cada moneda vale 1 unidad aquí para contar monedas reales
-	monedas_recogidas += 1
-	# Cada X monedas → ganar vida
-	while monedas_recogidas >= monedas_para_vida:
-		monedas_recogidas -= monedas_para_vida
-		ganar_vida()
-		
-#==============================
-#FUNCION PARA GANAR VIDA
-#==============================
-func ganar_vida():
-	if vida < vida_base:
-		vida += 1       # Recupera vida si tenía menos de la base
-	else:
-		vida += 1       # Aumenta vida más allá de la base (sin límite)
-	
-	print("Nueva vida:", vida)
-	
