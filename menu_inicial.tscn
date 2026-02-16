@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cx53eptotdtv6"]
+[gd_scene load_steps=0 format=3 uid="uid://cx53eptotdtv6"]
 
 [ext_resource type="Script" path="res://menu_inicial.gd" id="1_eap13"]
 [ext_resource type="Texture2D" uid="uid://vc6o7sc0mylm" path="res://1 Tiles/Fondo.png" id="1_u4fxu"]

@@ -1,18 +1,18 @@
 extends Area2D
 
-@onready var col: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
 
-func _ready():
-	col.disabled = true        # No se puede tocar
+func _ready():    # No se puede tocar
 	sprite.visible = false     # Invisible hasta que se active
+	monitoring = false
 
 func activar():
+	print("Activando diamante")
 	sprite.visible = true
-	col.disabled = false
+	monitoring = true
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Final")
+	print("Contacto con:", body.name)
 	if body.is_in_group("player"):
 		print("Final")
-		get_tree().change_scene("res://Final.tscn")
+		get_tree().change_scene_to_file("res://Final.tscn")

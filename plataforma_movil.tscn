@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c2pk2odhdqmpm"]
+[gd_scene load_steps=0 format=3 uid="uid://c2pk2odhdqmpm"]
 
 [ext_resource type="Script" uid="uid://bwiy6hpvsoyps" path="res://plataforma_movil.gd" id="1_rbb1a"]
 [ext_resource type="Texture2D" uid="uid://cly6gmxhxuwvm" path="res://craftpix-net-370528-free-medieval-ruins-cartoon-2d-tileset/PNG/Platformer/Bridge_01.png" id="2_yegm7"]

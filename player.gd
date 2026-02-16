@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var DURACION_ATAQUE := 0.4
 @export var DURACION_DESLIZAR := 0.7
 @export var TIEMPO_RECUPERAR_SALTOS := 2.0
-@export var vida : = 3	
+@export var vida : = 99
 
 #========================================
 #vARIABLES PARA SISTEMA DE PUNTOS Y GANAR VIDAS
@@ -32,7 +32,7 @@ var deslizando := false
 var tiempo_ataque := 0.0
 var tiempo_deslizamiento := 0.0
 var mirando_derecha := true
-var score := 0
+
 # animacion hit
 var herido := false
 var tiempo_herido := 0.0

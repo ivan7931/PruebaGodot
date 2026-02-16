@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://dtjr7ayaor5fl"]
+[gd_scene load_steps=3 format=3 uid="uid://dtjr7ayaor5fl"]
 
 [ext_resource type="Script" uid="uid://5tpqulyrivqt" path="res://HUD.gd" id="1_k5de2"]
+[ext_resource type="PackedScene" uid="uid://bk5u2f61dymf3" path="res://vida.tscn" id="2_efote"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -8,6 +9,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_k5de2")
+corazon_scene = ExtResource("2_efote")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
