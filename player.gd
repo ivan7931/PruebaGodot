@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var DURACION_ATAQUE := 0.4
 @export var DURACION_DESLIZAR := 0.7
 @export var TIEMPO_RECUPERAR_SALTOS := 2.0
-@export var vida : = 99
+@export var vida : = 4
 
 #========================================
 #vARIABLES PARA SISTEMA DE PUNTOS Y GANAR VIDAS
@@ -18,6 +18,8 @@ var score :=0  # Puntos totales
 var monedas_recogidas :=0 # Contador de monedas físicas
 var monedas_para_vida :=10 # Cuántas monedas físicas hacen ganar 1 vida
 var  vida_base :=3 # Vida base del jugador
+var punto_reaparicion: Vector2 # Donde aparecera cuando caiga
+var puede_morir := true
 
 # Fuerza extra sobre rampas
 @export var FUERZA_RAMPA := 1200.0
@@ -63,6 +65,7 @@ func _ready():
 	ataque_der.monitoring = false
 	ataque_izq.monitoring = false
 	col_deslizar.disabled = true
+	punto_reaparicion = global_position
 	score = 0
 	
 
@@ -240,6 +243,8 @@ func morir():
 	muerto = true
 	velocity = Vector2.ZERO
 	animated_sprite.play("Die")
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://game_over.tscn")
 
 func _on_atacar_der_body_entered(body: Node2D) -> void:
 	print("Golpeó a:", body.name)
@@ -313,3 +318,34 @@ func ganar_vida():
 	
 	print("Nueva vida:", vida)
 	
+
+
+func _on_zona_muerte_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		body.morir_por_caida()
+		
+func morir_por_caida():
+	if not puede_morir:
+		return
+		
+	puede_morir = false
+	vida -= 1
+	animated_sprite.play("herido")
+	
+	velocity = Vector2.ZERO
+	set_physics_process(false)   # Detiene movimiento
+	
+	await get_tree().create_timer(0.6).timeout
+	
+	global_position = punto_reaparicion
+	
+	await get_tree().create_timer(0.2).timeout
+	
+	set_physics_process(true)
+	puede_morir = true
+
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

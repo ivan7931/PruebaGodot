@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://ct3j32pjfw55a"]
+
+[ext_resource type="Script" uid="uid://bvkkfrg3nw0fs" path="res://game_over.gd" id="1_ccer4"]
+[ext_resource type="Texture2D" uid="uid://bjqsgb6cylelf" path="res://1 Tiles/GameOverFondo.png" id="1_yxx3c"]
+[ext_resource type="PackedScene" uid="uid://dnbsw3aj4vvwd" path="res://PruebaMov.tscn" id="2_8u835"]
+[ext_resource type="FontFile" uid="uid://fcevvakwcj4q" path="res://1 Tiles/Cinzel-Bold.ttf" id="2_ccer4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u835"]
+bg_color = Color(0.16862746, 0.12156863, 0.23921569, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5568628, 0.36078432, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftari"]
+bg_color = Color(0.101960786, 0.07058824, 0.14901961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41568628, 0.2509804, 0.7882353, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28vn7"]
+bg_color = Color(0.23137255, 0.16470589, 0.3529412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7921569, 0.6627451, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[node name="GameOver" type="Control" unique_id=2008652559]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ccer4")
+escena_juego = ExtResource("2_8u835")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1145690368]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 649.0
+texture = ExtResource("1_yxx3c")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="." unique_id=1089271187]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 107.0
+offset_right = 725.0
+offset_bottom = 211.0
+theme_override_constants/outline_size = 13
+theme_override_constants/shadow_outline_size = 24
+theme_override_fonts/font = ExtResource("2_ccer4")
+theme_override_font_sizes/font_size = 76
+text = "Muerto"
+
+[node name="Salir" type="Button" parent="." unique_id=336749538]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 471.0
+offset_right = 652.0
+offset_bottom = 522.0
+theme_override_colors/font_color = Color(0.9411765, 0.9019608, 1, 1)
+theme_override_colors/font_outline_color = Color(0.5568628, 0.36078432, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_8u835")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28vn7")
+text = "Salir"
+
+[node name="Reintentar" type="Button" parent="." unique_id=2029054676]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 392.0
+offset_right = 700.0
+offset_bottom = 448.0
+theme_override_colors/font_color = Color(0.9411765, 0.9019608, 1, 1)
+theme_override_colors/font_outline_color = Color(0.5568628, 0.36078432, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_8u835")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28vn7")
+text = "Jugar de nuevo"
+
+[connection signal="pressed" from="Salir" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="Reintentar" to="." method="_on_reintentar_pressed"]

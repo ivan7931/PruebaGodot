@@ -15,4 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 	print("Contacto con:", body.name)
 	if body.is_in_group("player"):
 		print("Final")
+		Global.score = body.score
+		
 		get_tree().change_scene_to_file("res://Final.tscn")

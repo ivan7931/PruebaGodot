@@ -15,8 +15,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="jUEGO"
-config/features=PackedStringArray("4.5", "Mobile")
+run/main_scene="uid://cx53eptotdtv6"
+config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://0fqwcjugd2up"
 
 [input]
 

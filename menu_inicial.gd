@@ -6,9 +6,6 @@ func _ready():
 	$VBoxContainer/Button.grab_focus()
 
 
-func _on_ButtonOpciones_pressed():
-	print("Opciones próximamente")
-
 func _on_ButtonSalir_pressed():
 	get_tree().quit()
 

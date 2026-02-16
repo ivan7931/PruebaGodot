@@ -1,12 +1,115 @@
 [gd_scene format=3 uid="uid://dfq7wymvih2nq"]
 
-[node name="Final" type="Control"]
+[ext_resource type="Script" uid="uid://cx525usedlhbb" path="res://final.gd" id="1_x0wob"]
+[ext_resource type="PackedScene" uid="uid://cx53eptotdtv6" path="res://menu_inicial.tscn" id="2_okap3"]
+[ext_resource type="Texture2D" uid="uid://c2w1073ybgen0" path="res://1 Tiles/FondoFinal.png" id="2_r1d0p"]
+[ext_resource type="FontFile" uid="uid://fcevvakwcj4q" path="res://1 Tiles/Cinzel-Bold.ttf" id="3_okap3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua7wf"]
+bg_color = Color(0.16862746, 0.12156863, 0.23921569, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5568628, 0.36078432, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjy0o"]
+bg_color = Color(0.097643875, 0.07707719, 0.13240325, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41568628, 0.2509804, 0.7882353, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7bpx"]
+bg_color = Color(0.30482316, 0.112816, 0.33776033, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7921569, 0.6627451, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Final" type="Control" unique_id=678811139]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_x0wob")
+escena_juego = ExtResource("2_okap3")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1429320564]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1151.0
+offset_bottom = 651.0
+texture = ExtResource("2_r1d0p")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=940268845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1114.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45000002)
+
+[node name="Label" type="Label" parent="." unique_id=2079594239]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 98.0
+offset_right = 929.0
+offset_bottom = 185.0
+theme_override_constants/line_spacing = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/font = ExtResource("3_okap3")
+theme_override_font_sizes/font_size = 64
+text = "NIVEL COMPLETADO"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=971636386]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 264.0
+offset_right = 974.0
+offset_bottom = 314.0
+theme_override_constants/line_spacing = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/font = ExtResource("3_okap3")
+theme_override_font_sizes/font_size = 35
+
+[node name="Button3" type="Button" parent="." unique_id=1960512368]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 509.0
+offset_right = 715.0
+offset_bottom = 558.0
+theme_override_colors/font_color = Color(0.9411765, 0.9019608, 1, 1)
+theme_override_colors/font_outline_color = Color(0.5568628, 0.36078432, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ua7wf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jjy0o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w7bpx")
+text = "Volver al menu"
+
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
